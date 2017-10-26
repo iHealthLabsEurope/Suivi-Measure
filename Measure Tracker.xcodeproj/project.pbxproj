@@ -7,19 +7,109 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C903137786DAD7272BA627A8 /* Pods_Measure_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD2568EDA27E4F1AC78D91F /* Pods_Measure_Tracker.framework */; };
+		EC1EEAAF1F9F85E900E8D853 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC567F571F9F4D4500F23613 /* Info.plist */; };
+		EC1EEAB11F9F893700E8D853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1EEAB01F9F893700E8D853 /* Main.storyboard */; };
 		EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */; };
-		EC567F511F9F4D4500F23613 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC567F4F1F9F4D4500F23613 /* Main.storyboard */; };
 		EC567F531F9F4D4500F23613 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC567F521F9F4D4500F23613 /* Assets.xcassets */; };
 		EC567F561F9F4D4500F23613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC567F541F9F4D4500F23613 /* LaunchScreen.storyboard */; };
+		EC567F6A1F9F657E00F23613 /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F5E1F9F657A00F23613 /* MeasureViewController.swift */; };
+		EC567F6B1F9F657E00F23613 /* LoadingAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F5F1F9F657A00F23613 /* LoadingAppViewController.swift */; };
+		EC567F6C1F9F657E00F23613 /* MeasuresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F601F9F657A00F23613 /* MeasuresViewController.swift */; };
+		EC567F6D1F9F657E00F23613 /* iHealthDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F611F9F657A00F23613 /* iHealthDeviceManager.swift */; };
+		EC567F6E1F9F657E00F23613 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F621F9F657B00F23613 /* ProfileViewController.swift */; };
+		EC567F6F1F9F657E00F23613 /* HS4Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F631F9F657B00F23613 /* HS4Manager.swift */; };
+		EC567F711F9F657E00F23613 /* ScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F651F9F657B00F23613 /* ScaleViewController.swift */; };
+		EC567F731F9F657E00F23613 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F671F9F657C00F23613 /* DataManager.swift */; };
+		EC567F7E1F9F6ACB00F23613 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F7B1F9F6ACB00F23613 /* Empty.swift */; };
+		EC567F7F1F9F6ACB00F23613 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC567F7C1F9F6ACB00F23613 /* Empty.xib */; };
+		EC567F801F9F6ACB00F23613 /* MeasureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F7D1F9F6ACB00F23613 /* MeasureTableViewCell.swift */; };
+		EC567F861F9F6AF200F23613 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F821F9F6AF100F23613 /* Device.swift */; };
+		EC567F871F9F6AF200F23613 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F831F9F6AF100F23613 /* Measure.swift */; };
+		EC567F881F9F6AF200F23613 /* MeasureBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F841F9F6AF200F23613 /* MeasureBO.swift */; };
+		EC567F891F9F6AF200F23613 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F851F9F6AF200F23613 /* User.swift */; };
+		EC567F901F9F6B2700F23613 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F8C1F9F6B2600F23613 /* Colors.swift */; };
+		EC567F911F9F6B2700F23613 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F8D1F9F6B2700F23613 /* Extentions.swift */; };
+		EC567F921F9F6B2700F23613 /* UIKit+Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F8E1F9F6B2700F23613 /* UIKit+Hero.swift */; };
+		EC567F971F9F6C9C00F23613 /* iHealthSDK2.1.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567F961F9F6C9C00F23613 /* iHealthSDK2.1.3.a */; };
+		EC567FAC1F9F6D7800F23613 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FAB1F9F6D6C00F23613 /* Accelerate.framework */; };
+		EC567FAE1F9F6FFA00F23613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FAD1F9F6D8000F23613 /* SystemConfiguration.framework */; };
+		EC567FB01F9F708300F23613 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FAF1F9F706D00F23613 /* MediaPlayer.framework */; };
+		EC567FB21F9F70AC00F23613 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FB11F9F70A000F23613 /* ExternalAccessory.framework */; };
+		EC567FB41F9F70E400F23613 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FB31F9F70C100F23613 /* CoreBluetooth.framework */; };
+		EC567FB61F9F70F700F23613 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FB51F9F70F000F23613 /* CoreGraphics.framework */; };
+		EC567FB81F9F710400F23613 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FB71F9F70FF00F23613 /* UIKit.framework */; };
+		EC567FBA1F9F711500F23613 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FB91F9F710F00F23613 /* Foundation.framework */; };
+		EC567FBC1F9F712700F23613 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FBB1F9F712700F23613 /* libz.1.2.5.tbd */; };
+		EC567FBE1F9F713100F23613 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FBD1F9F713100F23613 /* libz.tbd */; };
+		EC567FC01F9F713C00F23613 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FBF1F9F713C00F23613 /* libxml2.2.tbd */; };
+		EC6783F61F9F830700EB842A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC6783F81F9F830700EB842A /* InfoPlist.strings */; };
+		EC6783F91F9F830B00EB842A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC6783FB1F9F830B00EB842A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8DD2568EDA27E4F1AC78D91F /* Pods_Measure_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Measure_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A918DA68DD48DB295CD46728 /* Pods-Measure Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Measure Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		C51C790A121E0B1C66C8C6D2 /* Pods-Measure Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Measure Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		EC1EEAB01F9F893700E8D853 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EC567F481F9F4D4500F23613 /* Measure Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Measure Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC567F501F9F4D4500F23613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC567F521F9F4D4500F23613 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC567F551F9F4D4500F23613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC567F571F9F4D4500F23613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC567F5E1F9F657A00F23613 /* MeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
+		EC567F5F1F9F657A00F23613 /* LoadingAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAppViewController.swift; sourceTree = "<group>"; };
+		EC567F601F9F657A00F23613 /* MeasuresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasuresViewController.swift; sourceTree = "<group>"; };
+		EC567F611F9F657A00F23613 /* iHealthDeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iHealthDeviceManager.swift; sourceTree = "<group>"; };
+		EC567F621F9F657B00F23613 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EC567F631F9F657B00F23613 /* HS4Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HS4Manager.swift; sourceTree = "<group>"; };
+		EC567F651F9F657B00F23613 /* ScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleViewController.swift; sourceTree = "<group>"; };
+		EC567F671F9F657C00F23613 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EC567F7B1F9F6ACB00F23613 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		EC567F7C1F9F6ACB00F23613 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
+		EC567F7D1F9F6ACB00F23613 /* MeasureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureTableViewCell.swift; sourceTree = "<group>"; };
+		EC567F821F9F6AF100F23613 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		EC567F831F9F6AF100F23613 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		EC567F841F9F6AF200F23613 /* MeasureBO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureBO.swift; sourceTree = "<group>"; };
+		EC567F851F9F6AF200F23613 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EC567F8C1F9F6B2600F23613 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EC567F8D1F9F6B2700F23613 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		EC567F8E1F9F6B2700F23613 /* UIKit+Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Hero.swift"; sourceTree = "<group>"; };
+		EC567F8F1F9F6B2700F23613 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		EC567F961F9F6C9C00F23613 /* iHealthSDK2.1.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = iHealthSDK2.1.3.a; sourceTree = "<group>"; };
+		EC567F981F9F6CB600F23613 /* iHealthHS6.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iHealthHS6.h; sourceTree = "<group>"; };
+		EC567F991F9F6CB600F23613 /* HS5Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS5Controller.h; sourceTree = "<group>"; };
+		EC567F9A1F9F6CB700F23613 /* HS4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS4.h; sourceTree = "<group>"; };
+		EC567F9B1F9F6CB700F23613 /* HS4Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS4Controller.h; sourceTree = "<group>"; };
+		EC567F9C1F9F6CB800F23613 /* HS2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS2Controller.h; sourceTree = "<group>"; };
+		EC567F9D1F9F6CB800F23613 /* HS2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS2.h; sourceTree = "<group>"; };
+		EC567F9E1F9F6CB900F23613 /* HSHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSHeader.h; sourceTree = "<group>"; };
+		EC567F9F1F9F6CB900F23613 /* HS5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS5.h; sourceTree = "<group>"; };
+		EC567FA01F9F6CB900F23613 /* HS3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS3.h; sourceTree = "<group>"; };
+		EC567FA11F9F6CBA00F23613 /* HS3Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS3Controller.h; sourceTree = "<group>"; };
+		EC567FA21F9F6CBA00F23613 /* HSMacroFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSMacroFile.h; sourceTree = "<group>"; };
+		EC567FA31F9F6CD500F23613 /* ConnectDeviceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectDeviceController.h; sourceTree = "<group>"; };
+		EC567FA41F9F6CDE00F23613 /* ScanDeviceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanDeviceController.h; sourceTree = "<group>"; };
+		EC567FA51F9F6CEB00F23613 /* HealthUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthUser.h; sourceTree = "<group>"; };
+		EC567FA61F9F6CEC00F23613 /* HealthHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthHeader.h; sourceTree = "<group>"; };
+		EC567FA71F9F6CFB00F23613 /* ManageDeviceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManageDeviceController.h; sourceTree = "<group>"; };
+		EC567FA81F9F6D0C00F23613 /* SDKUpdateDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDKUpdateDevice.h; sourceTree = "<group>"; };
+		EC567FA91F9F6D1800F23613 /* IHSDKCloudUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IHSDKCloudUser.h; sourceTree = "<group>"; };
+		EC567FAB1F9F6D6C00F23613 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		EC567FAD1F9F6D8000F23613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EC567FAF1F9F706D00F23613 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		EC567FB11F9F70A000F23613 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		EC567FB31F9F70C100F23613 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		EC567FB51F9F70F000F23613 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EC567FB71F9F70FF00F23613 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EC567FB91F9F710F00F23613 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EC567FBB1F9F712700F23613 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		EC567FBD1F9F713100F23613 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		EC567FBF1F9F713C00F23613 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		EC6783F71F9F830700EB842A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC6783FA1F9F830B00EB842A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EC6783FC1F9F831900EB842A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC6783FD1F9F831900EB842A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +117,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC567FAC1F9F6D7800F23613 /* Accelerate.framework in Frameworks */,
+				EC567FAE1F9F6FFA00F23613 /* SystemConfiguration.framework in Frameworks */,
+				EC567FB01F9F708300F23613 /* MediaPlayer.framework in Frameworks */,
+				EC567F971F9F6C9C00F23613 /* iHealthSDK2.1.3.a in Frameworks */,
+				EC567FB21F9F70AC00F23613 /* ExternalAccessory.framework in Frameworks */,
+				EC567FB41F9F70E400F23613 /* CoreBluetooth.framework in Frameworks */,
+				EC567FB61F9F70F700F23613 /* CoreGraphics.framework in Frameworks */,
+				EC567FB81F9F710400F23613 /* UIKit.framework in Frameworks */,
+				EC567FBA1F9F711500F23613 /* Foundation.framework in Frameworks */,
+				EC567FBC1F9F712700F23613 /* libz.1.2.5.tbd in Frameworks */,
+				EC567FBE1F9F713100F23613 /* libz.tbd in Frameworks */,
+				EC567FC01F9F713C00F23613 /* libxml2.2.tbd in Frameworks */,
+				C903137786DAD7272BA627A8 /* Pods_Measure_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8634F7E279C36C785DFD20FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C51C790A121E0B1C66C8C6D2 /* Pods-Measure Tracker.debug.xcconfig */,
+				A918DA68DD48DB295CD46728 /* Pods-Measure Tracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EC567F3F1F9F4D4500F23613 = {
 			isa = PBXGroup;
 			children = (
 				EC567F4A1F9F4D4500F23613 /* Measure Tracker */,
 				EC567F491F9F4D4500F23613 /* Products */,
+				EC567FAA1F9F6D6B00F23613 /* Frameworks */,
+				8634F7E279C36C785DFD20FF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,12 +167,167 @@
 			isa = PBXGroup;
 			children = (
 				EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */,
-				EC567F4F1F9F4D4500F23613 /* Main.storyboard */,
-				EC567F521F9F4D4500F23613 /* Assets.xcassets */,
-				EC567F541F9F4D4500F23613 /* LaunchScreen.storyboard */,
-				EC567F571F9F4D4500F23613 /* Info.plist */,
+				EC567F791F9F6A6F00F23613 /* Manager */,
+				EC567F781F9F6A6900F23613 /* Controller */,
+				EC567F771F9F6A5400F23613 /* View */,
+				EC567F761F9F6A4B00F23613 /* Model */,
+				EC567F751F9F6A4400F23613 /* Utilities */,
 			);
 			path = "Measure Tracker";
+			sourceTree = "<group>";
+		};
+		EC567F751F9F6A4400F23613 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F521F9F4D4500F23613 /* Assets.xcassets */,
+				EC6783F81F9F830700EB842A /* InfoPlist.strings */,
+				EC6783FB1F9F830B00EB842A /* Localizable.strings */,
+				EC567F8F1F9F6B2700F23613 /* Bridging-Header.h */,
+				EC567F8C1F9F6B2600F23613 /* Colors.swift */,
+				EC567F8D1F9F6B2700F23613 /* Extentions.swift */,
+				EC567F8E1F9F6B2700F23613 /* UIKit+Hero.swift */,
+				EC567F571F9F4D4500F23613 /* Info.plist */,
+				EC567F931F9F6C4E00F23613 /* iHealthSDK */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EC567F761F9F6A4B00F23613 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F8A1F9F6AFB00F23613 /* BO */,
+				EC567F8B1F9F6B0000F23613 /* VO */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC567F771F9F6A5400F23613 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F7D1F9F6ACB00F23613 /* MeasureTableViewCell.swift */,
+				EC1EEAB01F9F893700E8D853 /* Main.storyboard */,
+				EC567F541F9F4D4500F23613 /* LaunchScreen.storyboard */,
+				EC567F811F9F6AD100F23613 /* Common */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC567F781F9F6A6900F23613 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F5F1F9F657A00F23613 /* LoadingAppViewController.swift */,
+				EC567F651F9F657B00F23613 /* ScaleViewController.swift */,
+				EC567F601F9F657A00F23613 /* MeasuresViewController.swift */,
+				EC567F5E1F9F657A00F23613 /* MeasureViewController.swift */,
+				EC567F621F9F657B00F23613 /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EC567F791F9F6A6F00F23613 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F671F9F657C00F23613 /* DataManager.swift */,
+				EC567F631F9F657B00F23613 /* HS4Manager.swift */,
+				EC567F7A1F9F6A8900F23613 /* iHealth */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EC567F7A1F9F6A8900F23613 /* iHealth */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F611F9F657A00F23613 /* iHealthDeviceManager.swift */,
+			);
+			path = iHealth;
+			sourceTree = "<group>";
+		};
+		EC567F811F9F6AD100F23613 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F7B1F9F6ACB00F23613 /* Empty.swift */,
+				EC567F7C1F9F6ACB00F23613 /* Empty.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EC567F8A1F9F6AFB00F23613 /* BO */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F841F9F6AF200F23613 /* MeasureBO.swift */,
+			);
+			path = BO;
+			sourceTree = "<group>";
+		};
+		EC567F8B1F9F6B0000F23613 /* VO */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F821F9F6AF100F23613 /* Device.swift */,
+				EC567F831F9F6AF100F23613 /* Measure.swift */,
+				EC567F851F9F6AF200F23613 /* User.swift */,
+			);
+			path = VO;
+			sourceTree = "<group>";
+		};
+		EC567F931F9F6C4E00F23613 /* iHealthSDK */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F961F9F6C9C00F23613 /* iHealthSDK2.1.3.a */,
+				EC567F951F9F6C7E00F23613 /* Common */,
+				EC567F941F9F6C6E00F23613 /* HS */,
+			);
+			path = iHealthSDK;
+			sourceTree = "<group>";
+		};
+		EC567F941F9F6C6E00F23613 /* HS */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F9D1F9F6CB800F23613 /* HS2.h */,
+				EC567F9C1F9F6CB800F23613 /* HS2Controller.h */,
+				EC567FA01F9F6CB900F23613 /* HS3.h */,
+				EC567FA11F9F6CBA00F23613 /* HS3Controller.h */,
+				EC567F9A1F9F6CB700F23613 /* HS4.h */,
+				EC567F9B1F9F6CB700F23613 /* HS4Controller.h */,
+				EC567F9F1F9F6CB900F23613 /* HS5.h */,
+				EC567F991F9F6CB600F23613 /* HS5Controller.h */,
+				EC567F9E1F9F6CB900F23613 /* HSHeader.h */,
+				EC567FA21F9F6CBA00F23613 /* HSMacroFile.h */,
+				EC567F981F9F6CB600F23613 /* iHealthHS6.h */,
+			);
+			path = HS;
+			sourceTree = "<group>";
+		};
+		EC567F951F9F6C7E00F23613 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EC567FA91F9F6D1800F23613 /* IHSDKCloudUser.h */,
+				EC567FA81F9F6D0C00F23613 /* SDKUpdateDevice.h */,
+				EC567FA71F9F6CFB00F23613 /* ManageDeviceController.h */,
+				EC567FA61F9F6CEC00F23613 /* HealthHeader.h */,
+				EC567FA51F9F6CEB00F23613 /* HealthUser.h */,
+				EC567FA31F9F6CD500F23613 /* ConnectDeviceController.h */,
+				EC567FA41F9F6CDE00F23613 /* ScanDeviceController.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EC567FAA1F9F6D6B00F23613 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC567FBF1F9F713C00F23613 /* libxml2.2.tbd */,
+				EC567FBD1F9F713100F23613 /* libz.tbd */,
+				EC567FBB1F9F712700F23613 /* libz.1.2.5.tbd */,
+				EC567FB91F9F710F00F23613 /* Foundation.framework */,
+				EC567FB71F9F70FF00F23613 /* UIKit.framework */,
+				EC567FB51F9F70F000F23613 /* CoreGraphics.framework */,
+				EC567FB31F9F70C100F23613 /* CoreBluetooth.framework */,
+				EC567FB11F9F70A000F23613 /* ExternalAccessory.framework */,
+				EC567FAF1F9F706D00F23613 /* MediaPlayer.framework */,
+				EC567FAD1F9F6D8000F23613 /* SystemConfiguration.framework */,
+				EC567FAB1F9F6D6C00F23613 /* Accelerate.framework */,
+				8DD2568EDA27E4F1AC78D91F /* Pods_Measure_Tracker.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,9 +337,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC567F5A1F9F4D4500F23613 /* Build configuration list for PBXNativeTarget "Measure Tracker" */;
 			buildPhases = (
+				3499DF9E916DD2E2819E0AF4 /* [CP] Check Pods Manifest.lock */,
 				EC567F441F9F4D4500F23613 /* Sources */,
 				EC567F451F9F4D4500F23613 /* Frameworks */,
 				EC567F461F9F4D4500F23613 /* Resources */,
+				0AED367AB057D880D7C90EA6 /* [CP] Embed Pods Frameworks */,
+				28B746F82759E62FD1EC2A9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -93,7 +365,13 @@
 				TargetAttributes = {
 					EC567F471F9F4D4500F23613 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -104,6 +382,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = EC567F3F1F9F4D4500F23613;
 			productRefGroup = EC567F491F9F4D4500F23613 /* Products */;
@@ -120,40 +399,131 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1EEAB11F9F893700E8D853 /* Main.storyboard in Resources */,
+				EC567F7F1F9F6ACB00F23613 /* Empty.xib in Resources */,
+				EC6783F61F9F830700EB842A /* InfoPlist.strings in Resources */,
 				EC567F561F9F4D4500F23613 /* LaunchScreen.storyboard in Resources */,
+				EC6783F91F9F830B00EB842A /* Localizable.strings in Resources */,
 				EC567F531F9F4D4500F23613 /* Assets.xcassets in Resources */,
-				EC567F511F9F4D4500F23613 /* Main.storyboard in Resources */,
+				EC1EEAAF1F9F85E900E8D853 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AED367AB057D880D7C90EA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/IGCMenu/IGCMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGCMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableGraphView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28B746F82759E62FD1EC2A9D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3499DF9E916DD2E2819E0AF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Measure Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC567F441F9F4D4500F23613 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC567F6A1F9F657E00F23613 /* MeasureViewController.swift in Sources */,
+				EC567F731F9F657E00F23613 /* DataManager.swift in Sources */,
+				EC567F711F9F657E00F23613 /* ScaleViewController.swift in Sources */,
+				EC567F921F9F6B2700F23613 /* UIKit+Hero.swift in Sources */,
+				EC567F6D1F9F657E00F23613 /* iHealthDeviceManager.swift in Sources */,
+				EC567F6C1F9F657E00F23613 /* MeasuresViewController.swift in Sources */,
+				EC567F6E1F9F657E00F23613 /* ProfileViewController.swift in Sources */,
+				EC567F6F1F9F657E00F23613 /* HS4Manager.swift in Sources */,
+				EC567F861F9F6AF200F23613 /* Device.swift in Sources */,
+				EC567F871F9F6AF200F23613 /* Measure.swift in Sources */,
+				EC567F7E1F9F6ACB00F23613 /* Empty.swift in Sources */,
+				EC567F911F9F6B2700F23613 /* Extentions.swift in Sources */,
+				EC567F901F9F6B2700F23613 /* Colors.swift in Sources */,
+				EC567F801F9F6ACB00F23613 /* MeasureTableViewCell.swift in Sources */,
 				EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */,
+				EC567F891F9F6AF200F23613 /* User.swift in Sources */,
+				EC567F881F9F6AF200F23613 /* MeasureBO.swift in Sources */,
+				EC567F6B1F9F657E00F23613 /* LoadingAppViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EC567F4F1F9F4D4500F23613 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC567F501F9F4D4500F23613 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EC567F541F9F4D4500F23613 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EC567F551F9F4D4500F23613 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EC6783F81F9F830700EB842A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC6783F71F9F830700EB842A /* en */,
+				EC6783FC1F9F831900EB842A /* fr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EC6783FB1F9F830B00EB842A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC6783FA1F9F830B00EB842A /* en */,
+				EC6783FD1F9F831900EB842A /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -163,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -220,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -268,30 +640,46 @@
 		};
 		EC567F5B1F9F4D4500F23613 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51C790A121E0B1C66C8C6D2 /* Pods-Measure Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3TCHJXHZ22;
-				INFOPLIST_FILE = "Measure Tracker/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Measure Tracker/Utilities/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Measure\\ Tracker/Utilities/iHealthSDK",
+					"$(PROJECT_DIR)/Measure\\ Tracker/Utilities/iHealthSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ihealth.test.Measure-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/gustavo/Xcode Projects/Measure Tracker/Measure Tracker/Utilities/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		EC567F5C1F9F4D4500F23613 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A918DA68DD48DB295CD46728 /* Pods-Measure Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3TCHJXHZ22;
-				INFOPLIST_FILE = "Measure Tracker/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Measure Tracker/Utilities/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Measure\\ Tracker/Utilities/iHealthSDK",
+					"$(PROJECT_DIR)/Measure\\ Tracker/Utilities/iHealthSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ihealth.test.Measure-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/gustavo/Xcode Projects/Measure Tracker/Measure Tracker/Utilities/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

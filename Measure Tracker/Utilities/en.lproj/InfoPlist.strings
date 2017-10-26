@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  Suivi de Poids
+
+  Created by Gustavo Serra on 10/10/2017.
+  Copyright © 2017 iHealthLabs. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Measure Tracker";
+"CFBundleName" = "Weight Tracker";
+
+"NSCameraUsageDescription" = "We use your camera to take a profile image.";
+"NSPhotoLibraryUsageDescription" = "We use your photo gallery to add a profile picture.";
