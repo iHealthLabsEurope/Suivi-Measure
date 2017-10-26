@@ -44,6 +44,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if url.scheme == "ihealth-suivi" {
+            
+            let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            let queryItems: [URLQueryItem]? = urlComponents?.queryItems
+            
+            let userName = queryItems?.filter { return $0.name == "name" }.first?.value
+            let userHeight = queryItems?.filter { return $0.name == "height" }.first?.value
+            let userPhotoString = queryItems?.filter { return $0.name == "photo" }.first?.value
+            
+            let newUser = User(name: userName,
+                               height: userHeight,
+                               photo: userPhotoString)
+            
+            DataManager.sharedInstnce.saveData(item: newUser, forKey: "user")
+        }
+        
+        return true
+    }
 }
 

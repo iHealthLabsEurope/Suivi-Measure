@@ -26,10 +26,12 @@ class User: NSObject, NSCoding  {
     
     override init() {}
     
-    init(name: String, height: String, photo: String, email: String, password: String) {
-        self._name = name
-        self._height = height
-        self._photo = photo
+    init(name: String?, height: String?, photo: String?, email: String = "", password: String = "") {
+        
+        if let _ = name { self._name = name! }
+        if let _ = height { self._height = height! }
+        if let _ = photo { self._photo = photo! }
+
         self._email = email
         self._password = password
     }
