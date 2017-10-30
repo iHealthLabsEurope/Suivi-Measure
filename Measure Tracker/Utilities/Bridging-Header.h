@@ -21,6 +21,7 @@
 // MARK: - SDK Common
 #import "ManageDeviceController.h"
 #import "HealthHeader.h"
+#import "HealthUser.h"
 #import "ConnectDeviceController.h"
 #import "ScanDeviceController.h"
 
@@ -29,3 +30,12 @@
 #import "HS4Controller.h"
 #import "HSHeader.h"
 #import "HSMacroFile.h"
+
+// MARK: - SDK BP Device
+
+#import "BP5.h"
+#import "BP5Controller.h"
+#import "BPMacroFile.h"
+#import "BP7.h"
+#import "BPDevice.h"
+#import "BPController.h"

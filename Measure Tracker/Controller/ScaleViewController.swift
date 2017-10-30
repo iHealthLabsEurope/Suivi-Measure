@@ -133,6 +133,8 @@ class ScaleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _ = BP5Manager.sharedInstance
+        
         self.setupView()
         
         self.bluetoothManager = CBCentralManager(delegate: self,

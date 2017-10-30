@@ -45,6 +45,8 @@
 		EC567FC01F9F713C00F23613 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FBF1F9F713C00F23613 /* libxml2.2.tbd */; };
 		EC6783F61F9F830700EB842A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC6783F81F9F830700EB842A /* InfoPlist.strings */; };
 		EC6783F91F9F830B00EB842A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC6783FB1F9F830B00EB842A /* Localizable.strings */; };
+		ECB188C81FA382C30041DE09 /* BP5Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB188C71FA382C30041DE09 /* BP5Manager.swift */; };
+		ECB188CA1FA385EE0041DE09 /* iHealthBSDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB188C91FA385EE0041DE09 /* iHealthBSDeviceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,35 @@
 		EC6783FA1F9F830B00EB842A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EC6783FC1F9F831900EB842A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EC6783FD1F9F831900EB842A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		ECB188C71FA382C30041DE09 /* BP5Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BP5Manager.swift; sourceTree = "<group>"; };
+		ECB188C91FA385EE0041DE09 /* iHealthBSDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHealthBSDeviceManager.swift; sourceTree = "<group>"; };
+		ECE799F71FA7312F00263FE6 /* BP5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5.h; sourceTree = "<group>"; };
+		ECE799F81FA7312F00263FE6 /* BPM1AE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPM1AE.h; sourceTree = "<group>"; };
+		ECE799F91FA7313000263FE6 /* BP7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7.h; sourceTree = "<group>"; };
+		ECE799FA1FA7313000263FE6 /* BPBV10Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBV10Device.h; sourceTree = "<group>"; };
+		ECE799FB1FA7313000263FE6 /* BPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHeader.h; sourceTree = "<group>"; };
+		ECE799FC1FA7313000263FE6 /* BPMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMacroFile.h; sourceTree = "<group>"; };
+		ECE799FD1FA7313000263FE6 /* BP5SRWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SRWController.h; sourceTree = "<group>"; };
+		ECE799FE1FA7313000263FE6 /* BP5SRW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SRW.h; sourceTree = "<group>"; };
+		ECE799FF1FA7313100263FE6 /* BPAlertSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAlertSettingModel.h; sourceTree = "<group>"; };
+		ECE79A001FA7313100263FE6 /* BPBTLEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBTLEDevice.h; sourceTree = "<group>"; };
+		ECE79A011FA7313100263FE6 /* BP3LController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3LController.h; sourceTree = "<group>"; };
+		ECE79A021FA7313100263FE6 /* BP5SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SController.h; sourceTree = "<group>"; };
+		ECE79A031FA7313100263FE6 /* BP5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5Controller.h; sourceTree = "<group>"; };
+		ECE79A041FA7313100263FE6 /* BPContinuaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContinuaController.h; sourceTree = "<group>"; };
+		ECE79A051FA7313100263FE6 /* BP7SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7SController.h; sourceTree = "<group>"; };
+		ECE79A061FA7313100263FE6 /* BP3L.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3L.h; sourceTree = "<group>"; };
+		ECE79A071FA7313100263FE6 /* BP3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3Controller.h; sourceTree = "<group>"; };
+		ECE79A081FA7313100263FE6 /* BP5S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5S.h; sourceTree = "<group>"; };
+		ECE79A091FA7313100263FE6 /* BPDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPDevice.h; sourceTree = "<group>"; };
+		ECE79A0A1FA7313200263FE6 /* BPLoopMeasureSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPLoopMeasureSettingModel.h; sourceTree = "<group>"; };
+		ECE79A0B1FA7313200263FE6 /* BPV24Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPV24Device.h; sourceTree = "<group>"; };
+		ECE79A0C1FA7313200263FE6 /* BP3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3.h; sourceTree = "<group>"; };
+		ECE79A0D1FA7313200263FE6 /* BPContinua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContinua.h; sourceTree = "<group>"; };
+		ECE79A0E1FA7313200263FE6 /* BP7Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7Controller.h; sourceTree = "<group>"; };
+		ECE79A0F1FA7313200263FE6 /* BPAV10Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAV10Device.h; sourceTree = "<group>"; };
+		ECE79A101FA7313200263FE6 /* BP7S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7S.h; sourceTree = "<group>"; };
+		ECE79A111FA7313200263FE6 /* BPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +260,7 @@
 			children = (
 				EC567F671F9F657C00F23613 /* DataManager.swift */,
 				EC567F631F9F657B00F23613 /* HS4Manager.swift */,
+				ECB188C71FA382C30041DE09 /* BP5Manager.swift */,
 				EC567F7A1F9F6A8900F23613 /* iHealth */,
 			);
 			path = Manager;
@@ -238,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				EC567F611F9F657A00F23613 /* iHealthDeviceManager.swift */,
+				ECB188C91FA385EE0041DE09 /* iHealthBSDeviceManager.swift */,
 			);
 			path = iHealth;
 			sourceTree = "<group>";
@@ -275,6 +308,7 @@
 				EC567F961F9F6C9C00F23613 /* iHealthSDK2.1.3.a */,
 				EC567F951F9F6C7E00F23613 /* Common */,
 				EC567F941F9F6C6E00F23613 /* HS */,
+				ECE799F61FA7308100263FE6 /* BP */,
 			);
 			path = iHealthSDK;
 			sourceTree = "<group>";
@@ -328,6 +362,40 @@
 				8DD2568EDA27E4F1AC78D91F /* Pods_Measure_Tracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECE799F61FA7308100263FE6 /* BP */ = {
+			isa = PBXGroup;
+			children = (
+				ECE79A0C1FA7313200263FE6 /* BP3.h */,
+				ECE79A071FA7313100263FE6 /* BP3Controller.h */,
+				ECE79A061FA7313100263FE6 /* BP3L.h */,
+				ECE79A011FA7313100263FE6 /* BP3LController.h */,
+				ECE799F71FA7312F00263FE6 /* BP5.h */,
+				ECE79A031FA7313100263FE6 /* BP5Controller.h */,
+				ECE79A081FA7313100263FE6 /* BP5S.h */,
+				ECE79A021FA7313100263FE6 /* BP5SController.h */,
+				ECE799FE1FA7313000263FE6 /* BP5SRW.h */,
+				ECE799FD1FA7313000263FE6 /* BP5SRWController.h */,
+				ECE799F91FA7313000263FE6 /* BP7.h */,
+				ECE79A0E1FA7313200263FE6 /* BP7Controller.h */,
+				ECE79A101FA7313200263FE6 /* BP7S.h */,
+				ECE79A051FA7313100263FE6 /* BP7SController.h */,
+				ECE799FF1FA7313100263FE6 /* BPAlertSettingModel.h */,
+				ECE79A0F1FA7313200263FE6 /* BPAV10Device.h */,
+				ECE79A001FA7313100263FE6 /* BPBTLEDevice.h */,
+				ECE799FA1FA7313000263FE6 /* BPBV10Device.h */,
+				ECE79A0D1FA7313200263FE6 /* BPContinua.h */,
+				ECE79A041FA7313100263FE6 /* BPContinuaController.h */,
+				ECE79A111FA7313200263FE6 /* BPController.h */,
+				ECE79A091FA7313100263FE6 /* BPDevice.h */,
+				ECE799FB1FA7313000263FE6 /* BPHeader.h */,
+				ECE79A0A1FA7313200263FE6 /* BPLoopMeasureSettingModel.h */,
+				ECE799F81FA7312F00263FE6 /* BPM1AE.h */,
+				ECE799FC1FA7313000263FE6 /* BPMacroFile.h */,
+				ECE79A0B1FA7313200263FE6 /* BPV24Device.h */,
+			);
+			path = BP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,10 +557,12 @@
 				EC567F7E1F9F6ACB00F23613 /* Empty.swift in Sources */,
 				EC567F911F9F6B2700F23613 /* Extentions.swift in Sources */,
 				EC567F901F9F6B2700F23613 /* Colors.swift in Sources */,
+				ECB188C81FA382C30041DE09 /* BP5Manager.swift in Sources */,
 				EC567F801F9F6ACB00F23613 /* MeasureTableViewCell.swift in Sources */,
 				EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */,
 				EC567F891F9F6AF200F23613 /* User.swift in Sources */,
 				EC567F881F9F6AF200F23613 /* MeasureBO.swift in Sources */,
+				ECB188CA1FA385EE0041DE09 /* iHealthBSDeviceManager.swift in Sources */,
 				EC567F6B1F9F657E00F23613 /* LoadingAppViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

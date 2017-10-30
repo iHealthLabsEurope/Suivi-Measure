@@ -56,6 +56,9 @@
 	<key>UISupportedExternalAccessoryProtocols</key>
 	<array>
 		<string>com.jiuan.BWSV01</string>
+		<string>com.jiuan.BPV21</string>
+		<string>com.jiuan.BPV20</string>
+		<string>com.jiuan.P930</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
