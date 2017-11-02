@@ -42,6 +42,7 @@ class LoadingAppViewController: UIViewController {
                 authResult == UserAuthen_TrySuccess {
                 
                 HS4Manager.sharedInstance.discoveryInBackground()
+                BP5Manager.sharedInstance
                 
                 self.performSegue(withIdentifier: "segueToScale", sender: nil)
             } else {

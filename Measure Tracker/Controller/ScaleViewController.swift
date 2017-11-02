@@ -18,16 +18,27 @@ class ScaleViewController: UIViewController {
     @IBOutlet weak var profileButtonLabel: UILabel!
     
     @IBOutlet weak var emptyView: Empty!
+  
+    @IBOutlet weak var dayMeasuresStackView: UIStackView!
     
     @IBOutlet weak var dayWeightStackView: UIStackView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var weightUnitLabel: UILabel!
+    @IBOutlet weak var weightHelpButton: UIButton!
+    
+    @IBOutlet weak var separatorView: UIView!
+    
+    @IBOutlet weak var dayBloodPressionStackView: UIStackView!
+    @IBOutlet weak var bloodPressureDayLabel: UILabel!
+    @IBOutlet weak var bloodPressureLabel: UILabel!
+    @IBOutlet weak var bloodPressureUnitLabel: UILabel!
+    @IBOutlet weak var heartPulseLabel: UILabel!
+    @IBOutlet weak var heartPulseUnitLabel: UILabel!
+    @IBOutlet weak var bloodPressureAddButton: UIButton!
     
     @IBOutlet weak var weightGraphView: UIView!
     var weightGraph: ScrollableGraphView?
-
-    @IBOutlet weak var addWeightButton: UIButton!
     
     var isMenuActive: Bool = false
     
@@ -44,6 +55,30 @@ class ScaleViewController: UIViewController {
         self.measuresButtonLabel.textColor = Colors.secondaryColor.color
         self.profileButtonLabel.text = "profileTitleButton".localized
         self.profileButtonLabel.textColor = Colors.secondaryColor.color
+        
+        self.dayLabel.textColor = Colors.textColor.color
+        self.weightLabel.textColor = Colors.primaryColor.color
+        self.weightUnitLabel.textColor = Colors.textColor.color
+        self.weightHelpButton.setImage(UIImage(named: "help_scale"), for: .normal)
+        self.weightHelpButton.imageView?.layer.masksToBounds = false
+        self.weightHelpButton.imageView?.layer.shadowColor = Colors.textColor.color.cgColor
+        self.weightHelpButton.imageView?.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        self.weightHelpButton.imageView?.layer.shadowOpacity = 1
+        self.weightHelpButton.imageView?.layer.shadowRadius = 3
+        self.weightHelpButton.imageView?.layer.shadowPath = UIBezierPath(roundedRect: (self.weightHelpButton.imageView?.bounds)!, cornerRadius: (self.weightHelpButton.imageView?.frame)!.height).cgPath
+        
+        self.bloodPressureDayLabel.textColor = Colors.textColor.color
+        self.bloodPressureLabel.textColor = Colors.tertiaryColor.color
+        self.bloodPressureUnitLabel.textColor = Colors.textColor.color
+        self.heartPulseLabel.textColor = Colors.tertiaryColor.color
+        self.heartPulseUnitLabel.textColor = Colors.textColor.color
+        self.bloodPressureAddButton.setImage(UIImage(named: "add_pressure"), for: .normal)
+        self.bloodPressureAddButton.imageView?.layer.masksToBounds = false
+        self.bloodPressureAddButton.imageView?.layer.shadowColor = Colors.textColor.color.cgColor
+        self.bloodPressureAddButton.imageView?.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        self.bloodPressureAddButton.imageView?.layer.shadowOpacity = 1
+        self.bloodPressureAddButton.imageView?.layer.shadowRadius = 3
+        self.bloodPressureAddButton.imageView?.layer.shadowPath = UIBezierPath(roundedRect: (self.bloodPressureAddButton.imageView?.bounds)!, cornerRadius: (self.bloodPressureAddButton.imageView?.frame)!.height).cgPath
     }
     
     private func addGraph() {
@@ -132,8 +167,6 @@ class ScaleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        _ = BP5Manager.sharedInstance
         
         self.setupView()
         
@@ -247,23 +280,6 @@ class ScaleViewController: UIViewController {
         self.view.layoutSubviews()
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-//        if segue.identifier == "segueToMeasure" {
-//
-//            let type: MeasureType = sender as! MeasureType
-//
-//            let measureViewController: MeasureViewController = segue.destination as! MeasureViewController
-//            
-//            measureViewController.measureType = type
-//        }
-    }
-    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == "segueToMeasure" {
@@ -274,7 +290,24 @@ class ScaleViewController: UIViewController {
         return true
     }
  
+    @IBAction func weightHelpButtonClicked(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "weightHelpMessage".localized, message: nil, preferredStyle: UIAlertControllerStyle.alert)
 
+        alert.addAction(UIAlertAction(title: "weightHelpMessageOkButton".localized, style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func bloodPressureAddButtonClicked(_ sender: Any) {
+        
+        BP5Manager.sharedInstance.startMeasure({ (pressure) in
+            
+        }) { (status, resultDictionary, error) in
+            
+        }
+    }
+    
     @IBAction func measuresButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: "segueToMeasures", sender: sender)
     }
@@ -357,7 +390,7 @@ extension ScaleViewController {
                 if status {
                     HS4Manager.sharedInstance.startMeasureInBackground(HSUnit(rawValue: 1))
                 } else {
-                    print("Error: \(measureData["error"])")
+                    print("Error: \(String(describing: measureData["error"]))")
                 }
             }
         }

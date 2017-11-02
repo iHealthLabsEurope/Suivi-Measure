@@ -45,6 +45,8 @@
 "measuresTitleButton" = "Mesures";
 "profileTitleButton" = "Profil";
 "scaleTitleButton" = "Balance";
+"weightHelpMessage" = "Tenez-vous sur la balance pour faire une mesure";
+"weightHelpMessageOkButton" = "OK";
 
 // MARK: - Measures Screen Strings
 
