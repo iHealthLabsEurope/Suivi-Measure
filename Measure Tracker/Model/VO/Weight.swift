@@ -1,5 +1,5 @@
 //
-//  Measure.swift
+//  Weight.swift
 //  Suivi de Poids
 //
 //  Created by Gustavo Serra on 21/09/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MeasureType: String {
+enum WeightMeasureType: String {
     case Scale
     case Sync
     
@@ -23,7 +23,7 @@ enum MeasureType: String {
     }
 }
 
-class Measure: NSObject, NSCoding  {
+class Weight: NSObject, NSCoding  {
     
     struct Keys {
         static let value = "value"
@@ -89,3 +89,4 @@ class Measure: NSObject, NSCoding  {
         }
     }
 }
+

@@ -30,7 +30,7 @@
 
 // MARK: - Bluetooth Status Strings
 
-"bluetoothTurnOffMessage" = "Turn on Bluetooth to connect with your scale.";
+"bluetoothTurnOffMessage" = "Turn on Bluetooth to connect with your device.";
 "bluetoothTurnOffMessageSettingsButton" = "Settings";
 "bluetoothTurnOffMessageOkButton" = "OK";
 
@@ -41,12 +41,16 @@
 // MARK: - Scale Screen Strings
 
 "noMeasureDataTitle" = "Do your first measure";
-"noMeasureDataSubTitle" = "Make sure that your Bluetooth is turned on and that your scale is on.";
+"noMeasureDataSubTitle" = "It will be shown a graphic of your days evolution.";
 "measuresTitleButton" = "Measures";
 "profileTitleButton" = "Profile";
-"scaleTitleButton" = "Scale";
+"scaleTitleButton" = "Devices";
+"scaleHelpTitleButton" = " Start";
+"bloodPressureStartTitleButton" = " Start";
 "weightHelpMessage" = "Stand on in the scale to make a measure";
 "weightHelpMessageOkButton" = "OK";
+"deviceTurnOffMessage" = "Your device is turn off";
+"deviceTurnOffMessageOkButton" = "OK";
 
 // MARK: - Measures Screen Strings
 

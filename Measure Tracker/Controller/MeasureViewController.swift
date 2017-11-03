@@ -17,7 +17,7 @@ class MeasureViewController: UIViewController {
     @IBOutlet weak var measureLabel: UILabel!
     @IBOutlet weak var measureUnitLabel: UILabel!
     
-    var measure: Measure?
+    var measure: Weight?
     
     func setupView() {
 
@@ -59,7 +59,7 @@ extension MeasureViewController {
     func manageMeasureData(_ notification: Notification) {
         
         guard let measureData = notification.userInfo,
-            let measureType = measureData["type"] as? MeasureType else { return }
+            let measureType = measureData["type"] as? WeightMeasureType else { return }
         
         if measureType == .Scale {
             
@@ -71,13 +71,13 @@ extension MeasureViewController {
                     self.measureLabel.text = String(describing: weight)
                     
                     if stable {
-                        self.measure = Measure(value: String(describing: weight), unit: "Kg", date: Date())
+                        self.measure = Weight(value: String(describing: weight), unit: "Kg", date: Date())
                     }
                 }
             } else if let status = measureData["status"] as? Bool {
                 
                 if status {
-                    MeasureBO.saveMeasure(self.measure)
+                    Measure.saveMeasure(self.measure)
                 } else {
                     print("Error: \(measureData["error"])")
                 }

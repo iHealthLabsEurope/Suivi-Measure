@@ -23,6 +23,7 @@ class ScaleViewController: UIViewController {
     
     @IBOutlet weak var dayWeightStackView: UIStackView!
     @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var weightStackView: UIStackView!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var weightUnitLabel: UILabel!
     @IBOutlet weak var weightHelpButton: UIButton!
@@ -31,6 +32,7 @@ class ScaleViewController: UIViewController {
     
     @IBOutlet weak var dayBloodPressionStackView: UIStackView!
     @IBOutlet weak var bloodPressureDayLabel: UILabel!
+    @IBOutlet weak var bloodPressureStackView: UIStackView!
     @IBOutlet weak var bloodPressureLabel: UILabel!
     @IBOutlet weak var bloodPressureUnitLabel: UILabel!
     @IBOutlet weak var heartPulseLabel: UILabel!
@@ -46,8 +48,11 @@ class ScaleViewController: UIViewController {
     
     var user: User?
     
-    var measures: [Measure] = []
-    var measure: Measure?
+    var weightMeasures: [Weight] = []
+    var weightMeasure: Weight?
+    
+    var bloodPressureMeasures: [BloodPressure] = []
+    var bloodPressureMeasure: BloodPressure?
     
     private func setupView() {
         
@@ -66,6 +71,8 @@ class ScaleViewController: UIViewController {
         self.weightHelpButton.imageView?.layer.shadowOpacity = 1
         self.weightHelpButton.imageView?.layer.shadowRadius = 3
         self.weightHelpButton.imageView?.layer.shadowPath = UIBezierPath(roundedRect: (self.weightHelpButton.imageView?.bounds)!, cornerRadius: (self.weightHelpButton.imageView?.frame)!.height).cgPath
+        self.weightHelpButton.setTitle("scaleHelpTitleButton".localized, for: .normal)
+        self.weightHelpButton.setTitleColor(Colors.secondaryColor.color, for: .normal)
         
         self.bloodPressureDayLabel.textColor = Colors.textColor.color
         self.bloodPressureLabel.textColor = Colors.tertiaryColor.color
@@ -79,6 +86,8 @@ class ScaleViewController: UIViewController {
         self.bloodPressureAddButton.imageView?.layer.shadowOpacity = 1
         self.bloodPressureAddButton.imageView?.layer.shadowRadius = 3
         self.bloodPressureAddButton.imageView?.layer.shadowPath = UIBezierPath(roundedRect: (self.bloodPressureAddButton.imageView?.bounds)!, cornerRadius: (self.bloodPressureAddButton.imageView?.frame)!.height).cgPath
+        self.bloodPressureAddButton.setTitle("bloodPressureStartTitleButton".localized, for: .normal)
+        self.bloodPressureAddButton.setTitleColor(Colors.secondaryColor.color, for: .normal)
     }
     
     private func addGraph() {
@@ -128,14 +137,14 @@ class ScaleViewController: UIViewController {
         self.weightGraph?.shouldAnimateOnAdapt = false
         self.weightGraph?.direction = .leftToRight
         
-        guard let firstMeasure = self.measures.first,
+        guard let firstMeasure = self.weightMeasures.first,
                 let firstWeight = Double(firstMeasure.value) else { return }
         
         self.weightGraph?.rangeMax = firstWeight + 10
         
         while true {
 
-            if let _ = self.measures.first(where: {
+            if let _ = self.weightMeasures.first(where: {
                 
                 if let measure = Double($0.value),
                     let rangeMaxCurrent = self.weightGraph?.rangeMax {
@@ -173,28 +182,6 @@ class ScaleViewController: UIViewController {
         self.bluetoothManager = CBCentralManager(delegate: self,
                                                  queue: nil,
                                                  options: [CBCentralManagerOptionShowPowerAlertKey: false])
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/yyyy"
-//
-//        self.saveMeasure(measure: Measure(value: "63.3", unit: "Kg", date: dateFormatter.date(from: "07/06/2017")!))
-//        self.saveMeasure(measure: Measure(value: "63.4", unit: "Kg", date: dateFormatter.date(from: "14/06/2017")!))
-//        self.saveMeasure(measure: Measure(value: "63.4", unit: "Kg", date: dateFormatter.date(from: "21/06/2017")!))
-//        self.saveMeasure(measure: Measure(value: "63.5", unit: "Kg", date: dateFormatter.date(from: "28/06/2017")!))
-//        self.saveMeasure(measure: Measure(value: "63.6", unit: "Kg", date: dateFormatter.date(from: "05/07/2017")!))
-//        self.saveMeasure(measure: Measure(value: "63.6", unit: "Kg", date: dateFormatter.date(from: "12/07/2017")!))
-//        self.saveMeasure(measure: Measure(value: "63.9", unit: "Kg", date: dateFormatter.date(from: "19/07/2017")!))
-//        self.saveMeasure(measure: Measure(value: "64.2", unit: "Kg", date: dateFormatter.date(from: "26/07/2017")!))
-//        self.saveMeasure(measure: Measure(value: "64.6", unit: "Kg", date: dateFormatter.date(from: "02/08/2017")!))
-//        self.saveMeasure(measure: Measure(value: "65.4", unit: "Kg", date: dateFormatter.date(from: "09/08/2017")!))
-//        self.saveMeasure(measure: Measure(value: "66.0", unit: "Kg", date: dateFormatter.date(from: "16/08/2017")!))
-//        self.saveMeasure(measure: Measure(value: "66.3", unit: "Kg", date: dateFormatter.date(from: "23/08/2017")!))
-//        self.saveMeasure(measure: Measure(value: "66.6", unit: "Kg", date: dateFormatter.date(from: "30/08/2017")!))
-//        self.saveMeasure(measure: Measure(value: "67.0", unit: "Kg", date: dateFormatter.date(from: "06/09/2017")!))
-//        self.saveMeasure(measure: Measure(value: "68.2", unit: "Kg", date: dateFormatter.date(from: "13/09/2017")!))
-//        self.saveMeasure(measure: Measure(value: "68.0", unit: "Kg", date: dateFormatter.date(from: "20/09/2017")!))
-//        self.saveMeasure(measure: Measure(value: "68.9", unit: "Kg", date: dateFormatter.date(from: "27/09/2017")!))
-//        self.saveMeasure(measure: Measure(value: "69.7", unit: "Kg", date: dateFormatter.date(from: "04/10/2017")!))
-//        self.saveMeasure(measure: Measure(value: "69.9", unit: "Kg", date: dateFormatter.date(from: "11/10/2017")!))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -236,33 +223,7 @@ class ScaleViewController: UIViewController {
                                                name: NSNotification.Name("MeasureData"),
                                                object: nil)
         
-        if let measuresStored = DataManager.sharedInstnce.loadData(forKey: "measures") as? [Measure] {
-            
-            self.dayWeightStackView.isHidden = false
-            self.emptyView.isHidden = true
-
-            self.measures = measuresStored.sorted(by: { $0.0.date < $0.1.date })
-
-            guard let lastMeasure = self.measures.last else { return }
-            
-            self.weightLabel.text = lastMeasure.value
-            self.weightUnitLabel.text = lastMeasure.unit
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMM yyyy"
-            self.dayLabel.text = dateFormatter.string(from: lastMeasure.date)
-            
-            self.addGraph()
-        } else {
- 
-            self.emptyView.titleLabel.text = "noMeasureDataTitle".localized
-            self.emptyView.subTitleLabel.text = "noMeasureDataSubTitle".localized
-            self.emptyView.imageView.image = UIImage(named: "no_data_graph")
-            self.emptyView.actionButton.isHidden = true
-            
-            self.dayWeightStackView.isHidden = true
-            self.emptyView.isHidden = false
-        }
+        self.updateView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -284,7 +245,7 @@ class ScaleViewController: UIViewController {
         
         if identifier == "segueToMeasure" {
             
-            guard let _ = sender as? MeasureType else { return false }
+            guard let _ = sender as? WeightMeasureType else { return false }
         }
         
         return true
@@ -303,8 +264,35 @@ class ScaleViewController: UIViewController {
         
         BP5Manager.sharedInstance.startMeasure({ (pressure) in
             
-        }) { (status, resultDictionary, error) in
+        }) { (status, measureData, error) in
             
+            if status {
+                
+                guard let sys = measureData?["sys"] as? Int,
+                    let dia = measureData?["dia"] as? Int,
+                    let heart = measureData?["heartRate"] as? Int else { return }
+                
+                let newBloodPressure = BloodPressure(pressureValue: "\(sys)/\(dia)",
+                    pressureUnit: "mmHg",
+                    heartValue: "\(heart)",
+                    heartUnit: "Pouls",
+                    date: Date())
+                Measure.saveMeasure(newBloodPressure)
+                
+                self.updateView()
+            } else {
+                
+                print(error.debugDescription)
+                
+                if error == BPDeviceError.didDisconnect {
+                    
+                    let alert = UIAlertController(title: "deviceTurnOffMessage".localized, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "deviceTurnOffMessageOkButton".localized, style: .default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
     }
     
@@ -314,6 +302,78 @@ class ScaleViewController: UIViewController {
     
     @IBAction func profileButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: "segueToProfile", sender: sender)
+    }
+    
+    private func updateView () {
+        
+        self.weightGraph?.dataSource = nil
+        self.weightGraph?.removeFromSuperview()
+        self.weightGraph = nil
+        
+        self.dayLabel.isHidden = true
+        self.weightStackView.isHidden = true
+        
+        self.bloodPressureDayLabel.isHidden = true
+        self.bloodPressureStackView.isHidden = true
+        
+        let weightMeasuresStored = DataManager.sharedInstnce.loadData(forKey: "measures") as? [Weight]
+        let bloodPressureMeasuresStored = DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as? [BloodPressure]
+        
+        if weightMeasuresStored != nil ||
+            bloodPressureMeasuresStored != nil {
+
+            self.emptyView.isHidden = true
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            
+            if let _ = weightMeasuresStored {
+                
+                self.dayLabel.isHidden = false
+                self.weightStackView.isHidden = false
+                
+                self.weightMeasures = weightMeasuresStored!.sorted(by: { $0.0.date < $0.1.date })
+                
+                guard let lastWeightMeasure = self.weightMeasures.last else { return }
+                
+                self.weightLabel.text = lastWeightMeasure.value
+                self.weightUnitLabel.text = lastWeightMeasure.unit
+                
+                self.dayLabel.text = dateFormatter.string(from: lastWeightMeasure.date)
+            }
+            
+            if let _ = bloodPressureMeasuresStored {
+                
+                self.bloodPressureDayLabel.isHidden = false
+                self.bloodPressureStackView.isHidden = false
+                
+                self.bloodPressureMeasures = bloodPressureMeasuresStored!.sorted(by: { $0.0.date < $0.1.date })
+                
+                guard let lastBloodPressureMeasure = self.bloodPressureMeasures.last else { return }
+                
+                self.bloodPressureLabel.text = lastBloodPressureMeasure.pressureValue
+                self.bloodPressureUnitLabel.text = lastBloodPressureMeasure.pressureUnit
+                self.heartPulseLabel.text = lastBloodPressureMeasure.heartValue
+                self.heartPulseUnitLabel.text = lastBloodPressureMeasure.heartUnit
+                
+                self.bloodPressureDayLabel.text = dateFormatter.string(from: lastBloodPressureMeasure.date)
+            }
+            
+            if !self.dayWeightStackView.isHidden && !self.dayBloodPressionStackView.isHidden {
+                
+                self.separatorView.isHidden = false
+            }
+            
+            self.addGraph()
+        } else {
+            
+            self.emptyView.titleLabel.text = "noMeasureDataTitle".localized
+            self.emptyView.subTitleLabel.text = "noMeasureDataSubTitle".localized
+            self.emptyView.imageView.image = UIImage(named: "no_data_graph")
+            self.emptyView.actionButton.isHidden = true
+            
+            self.emptyView.isHidden = false
+        }
     }
 }
 
@@ -328,7 +388,7 @@ extension ScaleViewController: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         
-        guard let measure = Double(self.measures[pointIndex].value) else { return 0.0 }
+        guard let measure = Double(self.weightMeasures[pointIndex].value) else { return 0.0 }
         
         return measure
     }
@@ -338,11 +398,11 @@ extension ScaleViewController: ScrollableGraphViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM"
         
-        return dateFormatter.string(from: self.measures[pointIndex].date)
+        return dateFormatter.string(from: self.weightMeasures[pointIndex].date)
     }
     
     func numberOfPoints() -> Int {
-        return self.measures.count
+        return self.weightMeasures.count
     }
 }
 
@@ -351,7 +411,7 @@ extension ScaleViewController {
     func manageMeasureData(_ notification: Notification) {
         
         guard let measureData = notification.userInfo,
-                let measureType = measureData["type"] as? MeasureType else { return }
+                let measureType = measureData["type"] as? WeightMeasureType else { return }
         
         if measureType == .Sync {
             
@@ -362,11 +422,11 @@ extension ScaleViewController {
                 guard let weight = measureDataSync["weight"] as? Float,
                     let date = measureDataSync["date"] as? Date else { continue }
                 
-                let newMeasure = Measure(value: String(describing: weight),
+                let newMeasure = Weight(value: String(describing: weight),
                                          unit: "Kg",
                                          date: date)
                 
-                MeasureBO.saveMeasure(newMeasure)
+                Measure.saveMeasure(newMeasure)
                 
                 self.view.layoutIfNeeded()
             }
@@ -378,7 +438,7 @@ extension ScaleViewController {
                     let weight = measureDataScaleArray["weight"] as? Float {
                     
                     if stable {
-                        self.measure = Measure(value: String(describing: weight), unit: "Kg", date: Date())
+                        self.weightMeasure = Weight(value: String(describing: weight), unit: "Kg", date: Date())
                     } else {
                         
                         let measureViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MeasureViewController") as! MeasureViewController

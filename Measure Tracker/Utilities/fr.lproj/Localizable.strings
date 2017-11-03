@@ -30,7 +30,7 @@
 
 // MARK: - Bluetooth Status Strings
 
-"bluetoothTurnOffMessage" = "Activez le Bluetooth pour vous connecter à votre balance.";
+"bluetoothTurnOffMessage" = "Activez le Bluetooth pour vous connecter à votre dispositif.";
 "bluetoothTurnOffMessageSettingsButton" = "Réglages";
 "bluetoothTurnOffMessageOkButton" = "OK";
 
@@ -41,12 +41,16 @@
 // MARK: - Scale Screen Strings
 
 "noMeasureDataTitle" = "Réalisez votre première mesure";
-"noMeasureDataSubTitle" = "Assurez-vous que le Bluetooth est activé sur votre smartphone et que la balance est allumée.";
+"noMeasureDataSubTitle" = "Il sera montré un graphique de l'évolution de vos jours.";
 "measuresTitleButton" = "Mesures";
 "profileTitleButton" = "Profil";
-"scaleTitleButton" = "Balance";
+"scaleTitleButton" = "Dispositifs";
+"scaleHelpTitleButton" = " Démarrer";
+"bloodPressureStartTitleButton" = " Démarrer";
 "weightHelpMessage" = "Tenez-vous sur la balance pour faire une mesure";
 "weightHelpMessageOkButton" = "OK";
+"deviceTurnOffMessage" = "Votre dispositif n'est pas allumé";
+"deviceTurnOffMessageOkButton" = "OK";
 
 // MARK: - Measures Screen Strings
 

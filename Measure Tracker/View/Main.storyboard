@@ -336,7 +336,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3g-Qc-5cW" customClass="Empty" customModule="Measure_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="20" y="100" width="374" height="628"/>
+                                <rect key="frame" x="41.333333333333343" y="289.33333333333326" width="331.33333333333326" height="446.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n8W-MU-vr1">
@@ -440,7 +440,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="puI-9N-Wzc"/>
                                                 </constraints>
-                                                <state key="normal" image="help_scale"/>
+                                                <state key="normal" title=" Start" image="help_scale">
+                                                    <color key="titleColor" red="0.48627450979999998" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="weightHelpButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rCd-6N-74R"/>
                                                 </connections>
@@ -519,7 +521,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="kWi-2e-xgQ"/>
                                                 </constraints>
-                                                <state key="normal" image="add_pressure"/>
+                                                <state key="normal" title=" Start" image="add_pressure">
+                                                    <color key="titleColor" red="0.48627450979999998" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="bloodPressureAddButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qVB-Qt-AOr"/>
                                                 </connections>
@@ -543,18 +547,18 @@
                             <constraint firstItem="9cF-Wg-hTg" firstAttribute="top" secondItem="n8W-MU-vr1" secondAttribute="bottom" constant="31.999999999999915" id="0WG-gl-iUy"/>
                             <constraint firstItem="9cF-Wg-hTg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="9:10" id="1Z3-ta-emW"/>
                             <constraint firstAttribute="trailing" secondItem="BZA-bn-til" secondAttribute="trailing" id="5AY-g7-PVO"/>
-                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="6Ed-zg-xyL"/>
-                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="top" secondItem="fVo-5M-WBZ" secondAttribute="bottom" constant="8" id="9ZT-rP-uJy"/>
+                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="height" secondItem="BZA-bn-til" secondAttribute="height" id="7Ah-Cj-nqj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BZA-bn-til" secondAttribute="bottom" id="Adh-mY-I3M"/>
-                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LPC-0g-gye"/>
+                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="centerY" secondItem="BZA-bn-til" secondAttribute="centerY" id="MtL-c9-9UE"/>
                             <constraint firstItem="BZA-bn-til" firstAttribute="top" secondItem="9cF-Wg-hTg" secondAttribute="bottom" constant="15.999999999999943" id="U3v-Kr-78V"/>
                             <constraint firstItem="fVo-5M-WBZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ezu-go-XTU"/>
                             <constraint firstItem="9cF-Wg-hTg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hF7-c4-EI4"/>
                             <constraint firstItem="BZA-bn-til" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ksD-TF-GIu"/>
+                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="centerX" secondItem="BZA-bn-til" secondAttribute="centerX" id="lKw-M4-bYq"/>
                             <constraint firstItem="n8W-MU-vr1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nMb-6z-gLO"/>
+                            <constraint firstItem="m3g-Qc-5cW" firstAttribute="width" secondItem="BZA-bn-til" secondAttribute="width" multiplier="4:5" id="paf-FR-jBl"/>
                             <constraint firstItem="fVo-5M-WBZ" firstAttribute="centerY" secondItem="n8W-MU-vr1" secondAttribute="centerY" id="qC2-aj-rZD"/>
                             <constraint firstItem="n8W-MU-vr1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="qsO-pu-PsL"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="m3g-Qc-5cW" secondAttribute="bottom" constant="8" id="tNr-bm-m5k"/>
                         </constraints>
                     </view>
                     <userDefinedRuntimeAttributes>
@@ -564,6 +568,7 @@
                         <outlet property="bloodPressureAddButton" destination="uGE-3e-Lm9" id="BBq-77-VZC"/>
                         <outlet property="bloodPressureDayLabel" destination="qCz-CH-we0" id="NYM-G3-5rX"/>
                         <outlet property="bloodPressureLabel" destination="X8z-QL-bIZ" id="ohZ-ef-1Xf"/>
+                        <outlet property="bloodPressureStackView" destination="cmP-bD-wcU" id="G5e-Qe-5gz"/>
                         <outlet property="bloodPressureUnitLabel" destination="1S5-5I-ezy" id="NTb-ZJ-kja"/>
                         <outlet property="dayBloodPressionStackView" destination="Xr6-63-AOL" id="Yga-qe-ZKj"/>
                         <outlet property="dayLabel" destination="Wok-VD-5Yu" id="CRq-3m-sOY"/>
@@ -580,6 +585,7 @@
                         <outlet property="weightGraphView" destination="BZA-bn-til" id="wb0-LW-5kv"/>
                         <outlet property="weightHelpButton" destination="xGY-5O-vQn" id="hin-kP-C5E"/>
                         <outlet property="weightLabel" destination="pEQ-Wc-V9X" id="ubh-i3-mGZ"/>
+                        <outlet property="weightStackView" destination="aDs-3i-4R2" id="lsv-8c-937"/>
                         <outlet property="weightUnitLabel" destination="WqM-XE-7xQ" id="AH3-qc-gSy"/>
                         <segue destination="pSX-ht-lyZ" kind="presentation" identifier="segueToMeasures" id="bcX-12-df3"/>
                         <segue destination="cCd-fw-lsh" kind="presentation" identifier="segueToProfile" id="frH-iN-X51"/>
@@ -796,6 +802,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLB-A5-Pmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="33" y="772"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SFA-VR-tbb">
+            <objects>
+                <viewController id="vzX-TO-fCA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GKg-W3-Z7B"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Y5-pb-b6o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hKa-wc-hpt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rUN-zt-Gb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="771"/>
         </scene>
     </scenes>
     <resources>

@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var logoutButton: UIButton!
     
-    var measure: Measure?
+    var measure: Weight?
     
     private func setupView() {
 
@@ -122,7 +122,7 @@ extension ProfileViewController {
     func manageMeasureData(_ notification: Notification) {
         
         guard let measureData = notification.userInfo,
-            let measureType = measureData["type"] as? MeasureType else { return }
+            let measureType = measureData["type"] as? WeightMeasureType else { return }
         
         if measureType == .Sync {
             
@@ -133,11 +133,11 @@ extension ProfileViewController {
                 guard let weight = measureDataSync["weight"] as? Float,
                     let date = measureDataSync["date"] as? Date else { continue }
                 
-                let newMeasure = Measure(value: String(describing: weight),
+                let newMeasure = Weight(value: String(describing: weight),
                                          unit: "Kg",
                                          date: date)
                 
-                MeasureBO.saveMeasure(newMeasure)
+                Measure.saveMeasure(newMeasure)
             }
         } else if measureType == .Scale {
             
@@ -147,7 +147,7 @@ extension ProfileViewController {
                     let weight = measureDataScaleArray["weight"] as? Float {
                     
                     if stable {
-                        self.measure = Measure(value: String(describing: weight), unit: "Kg", date: Date())
+                        self.measure = Weight(value: String(describing: weight), unit: "Kg", date: Date())
                     } else {
                         
                         let measureViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MeasureViewController") as! MeasureViewController

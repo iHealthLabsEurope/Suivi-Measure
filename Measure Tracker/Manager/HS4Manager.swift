@@ -192,7 +192,7 @@ final class HS4Manager: iHealthDeviceManager {
                 print("------------ SyncData ---------------")
                 NotificationCenter.default.post(name: NSNotification.Name("MeasureData"),
                                             object: nil,
-                                            userInfo: ["type" : MeasureType.Sync,
+                                            userInfo: ["type" : WeightMeasureType.Sync,
                                                        "measures" : measuresDataArray])
             }
         }, complete: { [weak self] (status, error) in
@@ -207,7 +207,7 @@ final class HS4Manager: iHealthDeviceManager {
                         print("------------ MeasureData ---------------")
                         NotificationCenter.default.post(name: NSNotification.Name("MeasureData"),
                                                         object: nil,
-                                                        userInfo: ["type" : MeasureType.Scale,
+                                                        userInfo: ["type" : WeightMeasureType.Scale,
                                                                    "measure" : measureDataDic])
                     }
                 }
@@ -217,7 +217,7 @@ final class HS4Manager: iHealthDeviceManager {
                 print("------------ MeasureData Finish ---------------")
                 NotificationCenter.default.post(name: NSNotification.Name("MeasureData"),
                                                 object: nil,
-                                                userInfo: ["type" : MeasureType.Scale,
+                                                userInfo: ["type" : WeightMeasureType.Scale,
                                                            "status" : status,
                                                            "error" : error])
             })

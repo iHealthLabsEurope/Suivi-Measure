@@ -25,8 +25,7 @@
 		EC567F7F1F9F6ACB00F23613 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC567F7C1F9F6ACB00F23613 /* Empty.xib */; };
 		EC567F801F9F6ACB00F23613 /* MeasureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F7D1F9F6ACB00F23613 /* MeasureTableViewCell.swift */; };
 		EC567F861F9F6AF200F23613 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F821F9F6AF100F23613 /* Device.swift */; };
-		EC567F871F9F6AF200F23613 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F831F9F6AF100F23613 /* Measure.swift */; };
-		EC567F881F9F6AF200F23613 /* MeasureBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F841F9F6AF200F23613 /* MeasureBO.swift */; };
+		EC567F881F9F6AF200F23613 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F841F9F6AF200F23613 /* Measure.swift */; };
 		EC567F891F9F6AF200F23613 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F851F9F6AF200F23613 /* User.swift */; };
 		EC567F901F9F6B2700F23613 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F8C1F9F6B2600F23613 /* Colors.swift */; };
 		EC567F911F9F6B2700F23613 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F8D1F9F6B2700F23613 /* Extentions.swift */; };
@@ -45,6 +44,8 @@
 		EC567FC01F9F713C00F23613 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC567FBF1F9F713C00F23613 /* libxml2.2.tbd */; };
 		EC6783F61F9F830700EB842A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC6783F81F9F830700EB842A /* InfoPlist.strings */; };
 		EC6783F91F9F830B00EB842A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC6783FB1F9F830B00EB842A /* Localizable.strings */; };
+		EC9365AE1FAC717A003EA491 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9365AD1FAC717A003EA491 /* Weight.swift */; };
+		EC9365B21FAC761D003EA491 /* BloodPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9365B11FAC761D003EA491 /* BloodPressure.swift */; };
 		ECB188C81FA382C30041DE09 /* BP5Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB188C71FA382C30041DE09 /* BP5Manager.swift */; };
 		ECB188CA1FA385EE0041DE09 /* iHealthBSDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB188C91FA385EE0041DE09 /* iHealthBSDeviceManager.swift */; };
 /* End PBXBuildFile section */
@@ -71,8 +72,7 @@
 		EC567F7C1F9F6ACB00F23613 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		EC567F7D1F9F6ACB00F23613 /* MeasureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureTableViewCell.swift; sourceTree = "<group>"; };
 		EC567F821F9F6AF100F23613 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		EC567F831F9F6AF100F23613 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
-		EC567F841F9F6AF200F23613 /* MeasureBO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureBO.swift; sourceTree = "<group>"; };
+		EC567F841F9F6AF200F23613 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		EC567F851F9F6AF200F23613 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EC567F8C1F9F6B2600F23613 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		EC567F8D1F9F6B2700F23613 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
@@ -112,6 +112,8 @@
 		EC6783FA1F9F830B00EB842A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EC6783FC1F9F831900EB842A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EC6783FD1F9F831900EB842A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EC9365AD1FAC717A003EA491 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
+		EC9365B11FAC761D003EA491 /* BloodPressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressure.swift; sourceTree = "<group>"; };
 		ECB188C71FA382C30041DE09 /* BP5Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BP5Manager.swift; sourceTree = "<group>"; };
 		ECB188C91FA385EE0041DE09 /* iHealthBSDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHealthBSDeviceManager.swift; sourceTree = "<group>"; };
 		ECE799F71FA7312F00263FE6 /* BP5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5.h; sourceTree = "<group>"; };
@@ -287,7 +289,7 @@
 		EC567F8A1F9F6AFB00F23613 /* BO */ = {
 			isa = PBXGroup;
 			children = (
-				EC567F841F9F6AF200F23613 /* MeasureBO.swift */,
+				EC567F841F9F6AF200F23613 /* Measure.swift */,
 			);
 			path = BO;
 			sourceTree = "<group>";
@@ -296,7 +298,8 @@
 			isa = PBXGroup;
 			children = (
 				EC567F821F9F6AF100F23613 /* Device.swift */,
-				EC567F831F9F6AF100F23613 /* Measure.swift */,
+				EC9365AD1FAC717A003EA491 /* Weight.swift */,
+				EC9365B11FAC761D003EA491 /* BloodPressure.swift */,
 				EC567F851F9F6AF200F23613 /* User.swift */,
 			);
 			path = VO;
@@ -553,15 +556,16 @@
 				EC567F6E1F9F657E00F23613 /* ProfileViewController.swift in Sources */,
 				EC567F6F1F9F657E00F23613 /* HS4Manager.swift in Sources */,
 				EC567F861F9F6AF200F23613 /* Device.swift in Sources */,
-				EC567F871F9F6AF200F23613 /* Measure.swift in Sources */,
 				EC567F7E1F9F6ACB00F23613 /* Empty.swift in Sources */,
 				EC567F911F9F6B2700F23613 /* Extentions.swift in Sources */,
 				EC567F901F9F6B2700F23613 /* Colors.swift in Sources */,
 				ECB188C81FA382C30041DE09 /* BP5Manager.swift in Sources */,
 				EC567F801F9F6ACB00F23613 /* MeasureTableViewCell.swift in Sources */,
 				EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */,
+				EC9365AE1FAC717A003EA491 /* Weight.swift in Sources */,
 				EC567F891F9F6AF200F23613 /* User.swift in Sources */,
-				EC567F881F9F6AF200F23613 /* MeasureBO.swift in Sources */,
+				EC9365B21FAC761D003EA491 /* BloodPressure.swift in Sources */,
+				EC567F881F9F6AF200F23613 /* Measure.swift in Sources */,
 				ECB188CA1FA385EE0041DE09 /* iHealthBSDeviceManager.swift in Sources */,
 				EC567F6B1F9F657E00F23613 /* LoadingAppViewController.swift in Sources */,
 			);
