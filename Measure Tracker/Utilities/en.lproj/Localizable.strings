@@ -34,9 +34,13 @@
 "bluetoothTurnOffMessageSettingsButton" = "Settings";
 "bluetoothTurnOffMessageOkButton" = "OK";
 
-// MARK: - Measure Screen Strings
+// MARK: - Blood Pressure Measure Screen Strings
 
-"measureValueButtonSave" = "Save";
+"stopMeasureTitleButton" = "Stop";
+"restartMeasureTitleButton" = "Restart";
+"deviceNotTightTitle" = "Your device isn't well tight";
+"deviceNotTightMessage" = "Put back your device and restart the measure.";
+"deviceNotTightMessageOkButton" = "OK";
 
 // MARK: - Scale Screen Strings
 

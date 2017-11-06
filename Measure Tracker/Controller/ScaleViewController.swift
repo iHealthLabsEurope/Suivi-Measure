@@ -262,38 +262,8 @@ class ScaleViewController: UIViewController {
     
     @IBAction func bloodPressureAddButtonClicked(_ sender: Any) {
         
-        BP5Manager.sharedInstance.startMeasure({ (pressure) in
-            
-        }) { (status, measureData, error) in
-            
-            if status {
-                
-                guard let sys = measureData?["sys"] as? Int,
-                    let dia = measureData?["dia"] as? Int,
-                    let heart = measureData?["heartRate"] as? Int else { return }
-                
-                let newBloodPressure = BloodPressure(pressureValue: "\(sys)/\(dia)",
-                    pressureUnit: "mmHg",
-                    heartValue: "\(heart)",
-                    heartUnit: "Pouls",
-                    date: Date())
-                Measure.saveMeasure(newBloodPressure)
-                
-                self.updateView()
-            } else {
-                
-                print(error.debugDescription)
-                
-                if error == BPDeviceError.didDisconnect {
-                    
-                    let alert = UIAlertController(title: "deviceTurnOffMessage".localized, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    alert.addAction(UIAlertAction(title: "deviceTurnOffMessageOkButton".localized, style: .default, handler: nil))
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        }
+        let bloodPressureMeasureViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "BloodPressureMeasureViewController") as! BloodPressureMeasureViewController
+        self.present(bloodPressureMeasureViewController, animated: true, completion: nil)
     }
     
     @IBAction func measuresButtonClicked(_ sender: Any) {
