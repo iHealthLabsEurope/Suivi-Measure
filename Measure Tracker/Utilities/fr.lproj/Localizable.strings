@@ -58,6 +58,8 @@
 
 // MARK: - Measures Screen Strings
 
+"weightMeasuresSegmentTitle" = "Poids";
+"bloodPressureMeasuresSegmentTitle" = "Tension artérielle";
 "noMeasuresDataTitle" = "Vous n'avez pas encore de mesures!";
 "noMeasuresDataSubTitle" = "Vous pouvez réaliser votre première mesure à tout moment";
 

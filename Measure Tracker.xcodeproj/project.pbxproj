@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C903137786DAD7272BA627A8 /* Pods_Measure_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD2568EDA27E4F1AC78D91F /* Pods_Measure_Tracker.framework */; };
 		EC08507E1FB065540033AAAF /* BloodPressureMeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08507D1FB065540033AAAF /* BloodPressureMeasureViewController.swift */; };
+		EC0850801FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08507F1FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift */; };
 		EC1EEAAF1F9F85E900E8D853 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC567F571F9F4D4500F23613 /* Info.plist */; };
 		EC1EEAB11F9F893700E8D853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1EEAB01F9F893700E8D853 /* Main.storyboard */; };
 		EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */; };
@@ -56,6 +57,7 @@
 		A918DA68DD48DB295CD46728 /* Pods-Measure Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Measure Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		C51C790A121E0B1C66C8C6D2 /* Pods-Measure Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Measure Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Measure Tracker/Pods-Measure Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		EC08507D1FB065540033AAAF /* BloodPressureMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureMeasureViewController.swift; sourceTree = "<group>"; };
+		EC08507F1FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureMeasureTableViewCell.swift; sourceTree = "<group>"; };
 		EC1EEAB01F9F893700E8D853 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EC567F481F9F4D4500F23613 /* Measure Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Measure Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				EC567F7D1F9F6ACB00F23613 /* MeasureTableViewCell.swift */,
+				EC08507F1FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift */,
 				EC1EEAB01F9F893700E8D853 /* Main.storyboard */,
 				EC567F541F9F4D4500F23613 /* LaunchScreen.storyboard */,
 				EC567F811F9F6AD100F23613 /* Common */,
@@ -555,6 +558,7 @@
 				EC567F711F9F657E00F23613 /* ScaleViewController.swift in Sources */,
 				EC567F921F9F6B2700F23613 /* UIKit+Hero.swift in Sources */,
 				EC567F6D1F9F657E00F23613 /* iHealthDeviceManager.swift in Sources */,
+				EC0850801FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift in Sources */,
 				EC567F6C1F9F657E00F23613 /* MeasuresViewController.swift in Sources */,
 				EC567F6E1F9F657E00F23613 /* ProfileViewController.swift in Sources */,
 				EC567F6F1F9F657E00F23613 /* HS4Manager.swift in Sources */,

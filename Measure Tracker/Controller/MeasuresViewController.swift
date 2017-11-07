@@ -15,15 +15,23 @@ class MeasuresViewController: UIViewController {
     
     @IBOutlet weak var emptyView: Empty!
     
+    @IBOutlet weak var measuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var measuresTableView: UITableView!
     
     var measures: [Weight] = []
     var measure: Weight?
     
+    var bloodPressureMeasures: [BloodPressure] = []
+    var bloodPressureMeasure: BloodPressure?
+    
     private func setupView() {
         
         self.scaleButtonLabel.text = "scaleTitleButton".localized
         self.scaleButtonLabel.textColor = Colors.secondaryColor.color
+        
+        self.measuresSegmentedControl.setTitle("weightMeasuresSegmentTitle".localized, forSegmentAt: 0)
+        self.measuresSegmentedControl.setTitle("bloodPressureMeasuresSegmentTitle".localized, forSegmentAt: 1)
+        self.measuresSegmentedControl.tintColor = Colors.secondaryColor.color
     }
     
     override func viewDidLoad() {
@@ -40,22 +48,23 @@ class MeasuresViewController: UIViewController {
                                                name: NSNotification.Name("MeasureData"),
                                                object: nil)
         
-        if let measuresLoaded = DataManager.sharedInstnce.loadData(forKey: "measures") as? [Weight],
-            measuresLoaded.count > 0 {
-            
-            self.emptyView.isHidden = true
-            
-            self.measures = measuresLoaded.sorted(by: { $0.1.date < $0.0.date })
-            
-            self.measuresTableView.reloadData()
-        } else {
+        self.measures = (DataManager.sharedInstnce.loadData(forKey: "measures") as! [Weight]).sorted(by: { $0.1.date < $0.0.date })
+        self.bloodPressureMeasures = (DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as! [BloodPressure]).sorted(by: { $0.1.date < $0.0.date })
+        
+        if self.measures.count == 0 &&
+            self.bloodPressureMeasures.count == 0 {
             
             self.emptyView.titleLabel.text = "noMeasuresDataTitle".localized
             self.emptyView.subTitleLabel.text = "noMeasuresDataSubTitle".localized
             self.emptyView.imageView.image = UIImage(named: "no_data_list")
             self.emptyView.actionButton.isHidden = true
             
+            self.measuresTableView.isHidden = true
             self.emptyView.isHidden = false
+        } else {
+            
+            self.measuresTableView.isHidden = false
+            self.emptyView.isHidden = true
         }
     }
     
@@ -69,8 +78,8 @@ class MeasuresViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-        
+    @IBAction func measuresSegmentedControlChanged(_ sender: Any) {
+        self.measuresTableView.reloadData()
     }
 }
 
@@ -78,55 +87,98 @@ extension MeasuresViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.measures.count
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
+            
+            return self.measures.count
+        } else {
+            
+            return self.bloodPressureMeasures.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var identifier: String?
         
-        if indexPath.row == 0 {
-            identifier = "LastMeasureCell"
-        } else {
-            identifier = "MeasureCell"
-        }
-        
-        guard let id = identifier else { return UITableViewCell() }
-        
-        let cell: MeasureTableViewCell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MeasureTableViewCell
-        
-        if indexPath.row == 0 {
-            if self.measures.count == 1 {
-                cell.pointImageView.image = UIImage(named: "historic_one_point")
-            } else {
-                cell.pointImageView.image = UIImage(named: "historic_first_point")
-            }
-        } else if indexPath.row == self.measures.count - 1 {
-            cell.pointImageView.image = UIImage(named: "historic_last_point")
-        } else {
-            cell.pointImageView.image = UIImage(named: "historic_middle_point")
-        }
-
-        cell.measureLabel.text = self.measures[indexPath.row].value
-        cell.measureUnitLabel.text = self.measures[indexPath.row].unit
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
-        cell.measureDateLabel.text = dateFormatter.string(from: self.measures[indexPath.row].date)
-        
-        if indexPath.row == 0 {
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
             
-            if let lastMeasure = Float(self.measures[indexPath.row].value),
-                let firstValue = self.measures.last?.value,
-                let firstMeasure = Float(firstValue) {
-                
-                cell.measureDifferenceLabel.text = "+ \(Double(lastMeasure - firstMeasure).rounded(toPlaces: 1))"
+            if indexPath.row == 0 {
+                identifier = "LastMeasureCell"
             } else {
-                cell.measureDifferenceLabel.text = "---"
+                identifier = "MeasureCell"
             }
+            
+            guard let id = identifier else { return UITableViewCell() }
+            
+            let cell: MeasureTableViewCell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MeasureTableViewCell
+            
+            if indexPath.row == 0 {
+                if self.measures.count == 1 {
+                    cell.pointImageView.image = UIImage(named: "historic_one_point")
+                } else {
+                    cell.pointImageView.image = UIImage(named: "historic_first_point")
+                }
+            } else if indexPath.row == self.measures.count - 1 {
+                cell.pointImageView.image = UIImage(named: "historic_last_point")
+            } else {
+                cell.pointImageView.image = UIImage(named: "historic_middle_point")
+            }
+            
+            cell.measureLabel.text = self.measures[indexPath.row].value
+            cell.measureUnitLabel.text = self.measures[indexPath.row].unit
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            cell.measureDateLabel.text = dateFormatter.string(from: self.measures[indexPath.row].date)
+            
+            if indexPath.row == 0 {
+                
+                if let lastMeasure = Float(self.measures[indexPath.row].value),
+                    let firstValue = self.measures.last?.value,
+                    let firstMeasure = Float(firstValue) {
+                    
+                    cell.measureDifferenceLabel.text = "+ \(Double(lastMeasure - firstMeasure).rounded(toPlaces: 1))"
+                } else {
+                    cell.measureDifferenceLabel.text = "---"
+                }
+            }
+            
+            return cell
+        } else {
+            
+            if indexPath.row == 0 {
+                identifier = "LastBloodPressureCell"
+            } else {
+                identifier = "BloodPressureCell"
+            }
+            
+            guard let id = identifier else { return UITableViewCell() }
+            
+            let cell: BloodPressureMeasureTableViewCell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! BloodPressureMeasureTableViewCell
+            
+            if indexPath.row == 0 {
+                if self.bloodPressureMeasures.count == 1 {
+                    cell.pointImageView.image = UIImage(named: "blood_pressure_historic_one_point")
+                } else {
+                    cell.pointImageView.image = UIImage(named: "blood_pressure_historic_first_point")
+                }
+            } else if indexPath.row == self.bloodPressureMeasures.count - 1 {
+                cell.pointImageView.image = UIImage(named: "blood_pressure_historic_last_point")
+            } else {
+                cell.pointImageView.image = UIImage(named: "blood_pressure_historic_middle_point")
+            }
+            
+            cell.bloodPressureMeasureLabel.text = self.bloodPressureMeasures[indexPath.row].pressureValue
+            cell.bloodPressureMeasureUnitLabel.text = self.bloodPressureMeasures[indexPath.row].pressureUnit
+            cell.heartMeasureLabel.text = self.bloodPressureMeasures[indexPath.row].heartValue
+            cell.heartMeasureUnitLabel.text = self.bloodPressureMeasures[indexPath.row].heartUnit
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            cell.measureDateLabel.text = dateFormatter.string(from: self.bloodPressureMeasures[indexPath.row].date)
+            
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

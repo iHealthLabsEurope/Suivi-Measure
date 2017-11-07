@@ -58,6 +58,8 @@
 
 // MARK: - Measures Screen Strings
 
+"weightMeasuresSegmentTitle" = "Weight";
+"bloodPressureMeasuresSegmentTitle" = "Blood pressure";
 "noMeasuresDataTitle" = "You don't have saved measurements yet!";
 "noMeasuresDataSubTitle" = "You can do your first measure at any time";
 
