@@ -11,7 +11,7 @@ import UIKit
 
 enum Colors {
     
-    case primaryColor, primaryColorLowContrast, secondaryColor, tertiaryColor, backgroundColor, textWithBackgroudColor, textTitleColor, textColor, dangerColor
+    case primaryColor, primaryColorLowContrast, secondaryColor, tertiaryColor, tertiaryColorLowContrast, backgroundColor, textWithBackgroudColor, textTitleColor, textColor, dangerColor
     
     var color: UIColor {
         switch self {
@@ -26,6 +26,9 @@ enum Colors {
             
         case .tertiaryColor:
             return UIColor(red: 255.0 / 255.0, green: 212.0 / 255.0, blue: 121.0 / 255.0, alpha: 1.0)
+            
+        case .tertiaryColorLowContrast:
+            return UIColor(red: 255.0 / 255.0, green: 235.0 / 255.0, blue: 194.0 / 255.0, alpha: 1.0)
             
         case .backgroundColor:
             return UIColor(red: 245.0 / 255.0, green: 245.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)

@@ -39,8 +39,9 @@ class ScaleViewController: UIViewController {
     @IBOutlet weak var heartPulseUnitLabel: UILabel!
     @IBOutlet weak var bloodPressureAddButton: UIButton!
     
+    @IBOutlet weak var measuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var weightGraphView: UIView!
-    var weightGraph: ScrollableGraphView?
+    var measureGraph: ScrollableGraphView?
     
     var isMenuActive: Bool = false
     
@@ -90,9 +91,9 @@ class ScaleViewController: UIViewController {
         self.bloodPressureAddButton.setTitleColor(Colors.secondaryColor.color, for: .normal)
     }
     
-    private func addGraph() {
+    private func addWeightGraph() {
         
-        self.weightGraph = ScrollableGraphView(frame: self.weightGraphView.bounds, dataSource: self)
+        self.measureGraph = ScrollableGraphView(frame: self.weightGraphView.bounds, dataSource: self)
 
         // Setup the line plot.
         let linePlot = LinePlot(identifier: "poidsLine")
@@ -132,46 +133,129 @@ class ScaleViewController: UIViewController {
         //referenceLines.relativePositions = [0.25, 0.4, 0.5, 0.6, 0.75]
         
         // Setup the graph
-        self.weightGraph?.backgroundFillColor = UIColor.clear
-        self.weightGraph?.showsHorizontalScrollIndicator = false
-        self.weightGraph?.shouldAnimateOnAdapt = false
-        self.weightGraph?.direction = .leftToRight
+        self.measureGraph?.backgroundFillColor = UIColor.clear
+        self.measureGraph?.showsHorizontalScrollIndicator = false
+        self.measureGraph?.shouldAnimateOnAdapt = false
+        self.measureGraph?.direction = .rightToLeft
         
         guard let firstMeasure = self.weightMeasures.first,
                 let firstWeight = Double(firstMeasure.value) else { return }
         
-        self.weightGraph?.rangeMax = firstWeight + 10
+        self.measureGraph?.rangeMax = firstWeight + 10
         
         while true {
 
             if let _ = self.weightMeasures.first(where: {
                 
                 if let measure = Double($0.value),
-                    let rangeMaxCurrent = self.weightGraph?.rangeMax {
+                    let rangeMaxCurrent = self.measureGraph?.rangeMax {
                     return measure > rangeMaxCurrent
                 }
                 
                 return false
             })
             {
-                self.weightGraph?.rangeMax += 5
+                self.measureGraph?.rangeMax += 5
             } else {
                 break
             }
         }
 
-        self.weightGraph?.rangeMin = firstWeight - 3
+        self.measureGraph?.rangeMin = firstWeight - 3
 
         // Add everything to the graph.
-        self.weightGraph?.addReferenceLines(referenceLines: referenceLines)
-        self.weightGraph?.addPlot(plot: linePlot)
-        self.weightGraph?.addPlot(plot: dotPlot)
+        self.measureGraph?.addReferenceLines(referenceLines: referenceLines)
+        self.measureGraph?.addPlot(plot: linePlot)
+        self.measureGraph?.addPlot(plot: dotPlot)
         
         // Add the dataSource
-        self.weightGraph?.dataSource = self
+        self.measureGraph?.dataSource = self
         
         // Add graph into subView
-        self.weightGraphView.addSubview(self.weightGraph!)
+        self.weightGraphView.addSubview(self.measureGraph!)
+    }
+    
+    private func addBloodPressureGraph() {
+        
+        self.measureGraph = ScrollableGraphView(frame: self.weightGraphView.bounds, dataSource: self)
+        
+        // Setup the line plot.
+        let diaLinePlot = LinePlot(identifier: "tensionDiaLine")
+        
+        diaLinePlot.lineCap = kCALineCapButt
+        diaLinePlot.lineWidth = 0
+        diaLinePlot.lineColor = Colors.primaryColor.color
+        diaLinePlot.lineStyle = .smooth
+        
+        diaLinePlot.shouldFill = true
+        diaLinePlot.fillType = .gradient
+        diaLinePlot.fillGradientType = .linear
+        diaLinePlot.fillGradientStartColor = Colors.tertiaryColor.color
+        diaLinePlot.fillGradientEndColor = Colors.tertiaryColorLowContrast.color
+        
+        diaLinePlot.adaptAnimationType = .easeOut
+        diaLinePlot.animationDuration = 0.2
+        
+        // Setup the dot plot.
+        let diaDotPlot = DotPlot(identifier: "tensionDiaDots")
+        
+        diaDotPlot.dataPointType = .circle
+        diaDotPlot.dataPointSize = 2
+        diaDotPlot.dataPointFillColor = Colors.secondaryColor.color
+        
+        diaDotPlot.adaptAnimationType = .easeOut
+        
+        // Setup the line plot.
+        let sysLinePlot = LinePlot(identifier: "tensionSysLine")
+        
+        sysLinePlot.lineCap = kCALineCapButt
+        sysLinePlot.lineWidth = 1
+        sysLinePlot.lineColor = Colors.tertiaryColor.color
+        sysLinePlot.lineStyle = .smooth
+        
+        sysLinePlot.shouldFill = false
+        
+        sysLinePlot.adaptAnimationType = .easeOut
+        sysLinePlot.animationDuration = 0.2
+        
+        // Setup the dot plot.
+        let sysDotPlot = DotPlot(identifier: "tensionSysDots")
+        
+        sysDotPlot.dataPointType = .circle
+        sysDotPlot.dataPointSize = 2
+        sysDotPlot.dataPointFillColor = Colors.secondaryColor.color
+        
+        sysDotPlot.adaptAnimationType = .easeOut
+        
+        // Setup the reference lines.
+        let referenceLines = ReferenceLines()
+        
+        referenceLines.shouldShowReferenceLines = true
+        referenceLines.referenceLineLabelFont = UIFont.boldSystemFont(ofSize: 10)
+        referenceLines.referenceLineColor = UIColor.white.withAlphaComponent(0.2)
+        referenceLines.referenceLineLabelColor = Colors.secondaryColor.color.withAlphaComponent(0.8)
+        referenceLines.dataPointLabelColor = UIColor.white.withAlphaComponent(1)
+        
+        // Setup the graph
+        self.measureGraph?.backgroundFillColor = UIColor.clear
+        self.measureGraph?.showsHorizontalScrollIndicator = false
+        self.measureGraph?.shouldAnimateOnAdapt = false
+        self.measureGraph?.direction = .rightToLeft
+        self.measureGraph?.rangeMax = 180
+        self.measureGraph?.rangeMin = 50
+        
+        // Add everything to the graph.
+        self.measureGraph?.addReferenceLines(referenceLines: referenceLines)
+        self.measureGraph?.addPlot(plot: diaLinePlot)
+        self.measureGraph?.addPlot(plot: diaDotPlot)
+        self.measureGraph?.addPlot(plot: sysLinePlot)
+        self.measureGraph?.addPlot(plot: sysDotPlot)
+        
+        // Add the dataSource
+        self.measureGraph?.dataSource = self
+        
+        // Add graph into subView
+        self.weightGraphView.addSubview(self.measureGraph!)
     }
     
     override func viewDidLoad() {
@@ -230,14 +314,14 @@ class ScaleViewController: UIViewController {
         
         NotificationCenter.default.removeObserver(self)
         
-        self.weightGraph?.dataSource = nil
-        self.weightGraph?.removeFromSuperview()
-        self.weightGraph = nil
+        self.measureGraph?.dataSource = nil
+        self.measureGraph?.removeFromSuperview()
+        self.measureGraph = nil
     }
     
     override func viewDidLayoutSubviews() {
         
-        self.weightGraph?.frame = self.weightGraphView.bounds
+        self.measureGraph?.frame = self.weightGraphView.bounds
         self.view.layoutSubviews()
     }
     
@@ -266,6 +350,10 @@ class ScaleViewController: UIViewController {
         self.present(bloodPressureMeasureViewController, animated: true, completion: nil)
     }
     
+    @IBAction func measuresSegmentedControlChanged(_ sender: Any) {
+        self.updateGraph()
+    }
+    
     @IBAction func measuresButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: "segueToMeasures", sender: sender)
     }
@@ -275,11 +363,7 @@ class ScaleViewController: UIViewController {
     }
     
     private func updateView () {
-        
-        self.weightGraph?.dataSource = nil
-        self.weightGraph?.removeFromSuperview()
-        self.weightGraph = nil
-        
+
         self.dayLabel.isHidden = true
         self.weightStackView.isHidden = true
         
@@ -334,7 +418,7 @@ class ScaleViewController: UIViewController {
                 self.separatorView.isHidden = false
             }
             
-            self.addGraph()
+            self.updateGraph()
         } else {
             
             self.emptyView.titleLabel.text = "noMeasureDataTitle".localized
@@ -343,6 +427,19 @@ class ScaleViewController: UIViewController {
             self.emptyView.actionButton.isHidden = true
             
             self.emptyView.isHidden = false
+        }
+    }
+    
+    func updateGraph() {
+        
+        self.measureGraph?.dataSource = nil
+        self.measureGraph?.removeFromSuperview()
+        self.measureGraph = nil
+        
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
+            self.addWeightGraph()
+        } else {
+            self.addBloodPressureGraph()
         }
     }
 }
@@ -358,9 +455,28 @@ extension ScaleViewController: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot, atIndex pointIndex: Int) -> Double {
         
-        guard let measure = Double(self.weightMeasures[pointIndex].value) else { return 0.0 }
-        
-        return measure
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
+            
+            guard let measure = Double(self.weightMeasures[pointIndex].value) else { return 0.0 }
+            
+            return measure
+        } else {
+            
+            let measure = self.bloodPressureMeasures[pointIndex].pressureValue.split(separator: "/", maxSplits: 1, omittingEmptySubsequences: true)
+            
+            guard let sys = Double(measure[0].lowercased()),
+                let dia = Double(measure[1].lowercased()) else { return 0.0 }
+            
+            if plot.identifier == "tensionDiaLine" ||
+                plot.identifier == "tensionDiaDots" {
+                return dia
+            } else if plot.identifier == "tensionSysLine" ||
+                plot.identifier == "tensionSysDots" {
+                return sys
+            } else {
+                return 0.0
+            }
+        }
     }
     
     func label(atIndex pointIndex: Int) -> String {
@@ -368,11 +484,20 @@ extension ScaleViewController: ScrollableGraphViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM"
         
-        return dateFormatter.string(from: self.weightMeasures[pointIndex].date)
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
+            return dateFormatter.string(from: self.weightMeasures[pointIndex].date)
+        } else {
+            return dateFormatter.string(from: self.bloodPressureMeasures[pointIndex].date)
+        }
     }
     
     func numberOfPoints() -> Int {
-        return self.weightMeasures.count
+        
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
+            return self.weightMeasures.count
+        } else {
+            return self.bloodPressureMeasures.count
+        }
     }
 }
 
