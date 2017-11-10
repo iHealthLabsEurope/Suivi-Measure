@@ -19,6 +19,8 @@ class MeasureViewController: UIViewController {
     
     var measure: Weight?
     
+    weak var delegate: MeasureDelegate?
+    
     func setupView() {
 
         self.measureLabel.textColor = Colors.primaryColor.color
@@ -49,6 +51,8 @@ class MeasureViewController: UIViewController {
     @IBAction func exitButtonClicked(_ sender: Any) {
         
         HS4Manager.sharedInstance.startMeasureInBackground(HSUnit(rawValue: 1))
+        
+        self.delegate?.measureFinished(type: .Weight)
         
         self.dismiss(animated: true, completion: nil)
     }

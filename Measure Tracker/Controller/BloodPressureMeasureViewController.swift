@@ -24,6 +24,10 @@ class BloodPressureMeasureViewController: UIViewController {
     @IBOutlet weak var heartLabel: UILabel!
     @IBOutlet weak var heartUnitLabel: UILabel!
     
+    var measure: BloodPressure?
+    
+    weak var delegate: MeasureDelegate?
+    
     var isMeasuring: Bool = true {
         
         didSet {
@@ -84,18 +88,18 @@ class BloodPressureMeasureViewController: UIViewController {
                     let dia = measureData?["dia"] as? Int,
                     let heart = measureData?["heartRate"] as? Int else { return }
                 
-                let newBloodPressure = BloodPressure(pressureValue: "\(sys)/\(dia)",
+                self.measure = BloodPressure(pressureValue: "\(sys)/\(dia)",
                     pressureUnit: "mmHg",
                     heartValue: "\(heart)",
                     heartUnit: "Pouls",
                     date: Date())
                 
-                Measure.saveMeasure(newBloodPressure)
+                self.bloodPressureLabel.text = self.measure?.pressureValue
+                self.bloodPressureUnitLabel.text = self.measure?.pressureUnit
+                self.heartLabel.text = self.measure?.heartValue
+                self.heartUnitLabel.text = self.measure?.heartUnit
                 
-                self.bloodPressureLabel.text = newBloodPressure.pressureValue
-                self.bloodPressureUnitLabel.text = newBloodPressure.pressureUnit
-                self.heartLabel.text = newBloodPressure.heartValue
-                self.heartUnitLabel.text = newBloodPressure.heartUnit
+                Measure.saveMeasure(self.measure)
             } else {
                 
                 print(error.debugDescription)
@@ -128,6 +132,8 @@ class BloodPressureMeasureViewController: UIViewController {
     }
     
     @IBAction func exitButtonClicked(_ sender: Any) {
+        
+        self.delegate?.measureFinished(type: .BloodPressure)
         
         if isMeasuring {
             

@@ -8,6 +8,15 @@
 
 import Foundation
 
+protocol MeasureDelegate: class {
+    func measureFinished(type: MeasureType)
+}
+
+enum MeasureType: String {
+    case Weight
+    case BloodPressure
+}
+
 final class Measure {
     
     static func saveMeasure(_ measure: Weight?) {

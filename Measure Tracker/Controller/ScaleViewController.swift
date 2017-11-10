@@ -347,6 +347,9 @@ class ScaleViewController: UIViewController {
     @IBAction func bloodPressureAddButtonClicked(_ sender: Any) {
         
         let bloodPressureMeasureViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "BloodPressureMeasureViewController") as! BloodPressureMeasureViewController
+        
+        bloodPressureMeasureViewController.delegate = self
+        
         self.present(bloodPressureMeasureViewController, animated: true, completion: nil)
     }
     
@@ -444,6 +447,20 @@ class ScaleViewController: UIViewController {
     }
 }
 
+extension ScaleViewController: MeasureDelegate {
+    
+    func measureFinished(type: MeasureType) {
+        
+        if type == .Weight {
+            
+            self.measuresSegmentedControl.selectedSegmentIndex = 0
+        } else if type == .BloodPressure {
+            
+            self.measuresSegmentedControl.selectedSegmentIndex = 1
+        }
+    }
+}
+
 extension ScaleViewController: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -537,6 +554,9 @@ extension ScaleViewController {
                     } else {
                         
                         let measureViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MeasureViewController") as! MeasureViewController
+                        
+                        measureViewController.delegate = self
+                        
                         self.present(measureViewController, animated: true, completion: nil)
                     }
                 }
