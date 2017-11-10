@@ -89,6 +89,10 @@ class ScaleViewController: UIViewController {
         self.bloodPressureAddButton.imageView?.layer.shadowPath = UIBezierPath(roundedRect: (self.bloodPressureAddButton.imageView?.bounds)!, cornerRadius: (self.bloodPressureAddButton.imageView?.frame)!.height).cgPath
         self.bloodPressureAddButton.setTitle("bloodPressureStartTitleButton".localized, for: .normal)
         self.bloodPressureAddButton.setTitleColor(Colors.secondaryColor.color, for: .normal)
+        
+        self.measuresSegmentedControl.setTitle("weightMeasuresSegmentTitle".localized, forSegmentAt: 0)
+        self.measuresSegmentedControl.setTitle("bloodPressureMeasuresSegmentTitle".localized, forSegmentAt: 1)
+        self.measuresSegmentedControl.tintColor = Colors.secondaryColor.color
     }
     
     private func addWeightGraph() {
@@ -183,15 +187,11 @@ class ScaleViewController: UIViewController {
         let diaLinePlot = LinePlot(identifier: "tensionDiaLine")
         
         diaLinePlot.lineCap = kCALineCapButt
-        diaLinePlot.lineWidth = 0
-        diaLinePlot.lineColor = Colors.primaryColor.color
+        diaLinePlot.lineWidth = 2
+        diaLinePlot.lineColor = Colors.tertiaryColor.color
         diaLinePlot.lineStyle = .smooth
         
-        diaLinePlot.shouldFill = true
-        diaLinePlot.fillType = .gradient
-        diaLinePlot.fillGradientType = .linear
-        diaLinePlot.fillGradientStartColor = Colors.tertiaryColor.color
-        diaLinePlot.fillGradientEndColor = Colors.tertiaryColorLowContrast.color
+        diaLinePlot.shouldFill = false
         
         diaLinePlot.adaptAnimationType = .easeOut
         diaLinePlot.animationDuration = 0.2
@@ -209,7 +209,7 @@ class ScaleViewController: UIViewController {
         let sysLinePlot = LinePlot(identifier: "tensionSysLine")
         
         sysLinePlot.lineCap = kCALineCapButt
-        sysLinePlot.lineWidth = 1
+        sysLinePlot.lineWidth = 2
         sysLinePlot.lineColor = Colors.tertiaryColor.color
         sysLinePlot.lineStyle = .smooth
         

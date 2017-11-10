@@ -46,9 +46,9 @@
 
 "noMeasureDataTitle" = "Réalisez votre première mesure";
 "noMeasureDataSubTitle" = "Il sera montré un graphique de l'évolution de vos jours.";
-"measuresTitleButton" = "Mesures";
+"measuresTitleButton" = "Historique";
 "profileTitleButton" = "Profil";
-"scaleTitleButton" = "Dispositifs";
+"principalTitleButton" = "Mesure";
 "scaleHelpTitleButton" = " Démarrer";
 "bloodPressureStartTitleButton" = " Démarrer";
 "weightHelpMessage" = "Tenez-vous sur la balance pour faire une mesure";

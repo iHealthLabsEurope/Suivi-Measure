@@ -18,15 +18,15 @@ class MeasuresViewController: UIViewController {
     @IBOutlet weak var measuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var measuresTableView: UITableView!
     
-    var measures: [Weight] = []
-    var measure: Weight?
+    var weightMeasures: [Weight] = []
+    var weightMeasure: Weight?
     
     var bloodPressureMeasures: [BloodPressure] = []
     var bloodPressureMeasure: BloodPressure?
     
     private func setupView() {
         
-        self.scaleButtonLabel.text = "scaleTitleButton".localized
+        self.scaleButtonLabel.text = "principalTitleButton".localized
         self.scaleButtonLabel.textColor = Colors.secondaryColor.color
         
         self.measuresSegmentedControl.setTitle("weightMeasuresSegmentTitle".localized, forSegmentAt: 0)
@@ -48,21 +48,45 @@ class MeasuresViewController: UIViewController {
                                                name: NSNotification.Name("MeasureData"),
                                                object: nil)
         
-        self.measures = (DataManager.sharedInstnce.loadData(forKey: "measures") as! [Weight]).sorted(by: { $0.1.date < $0.0.date })
-        self.bloodPressureMeasures = (DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as! [BloodPressure]).sorted(by: { $0.1.date < $0.0.date })
+        guard let weightMeasures = DataManager.sharedInstnce.loadData(forKey: "measures") as? [Weight],
+            let bloodPressureMeasures = DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as? [BloodPressure] else {
+                
+                self.emptyView.titleLabel.text = "noMeasuresDataTitle".localized
+                self.emptyView.subTitleLabel.text = "noMeasuresDataSubTitle".localized
+                self.emptyView.imageView.image = UIImage(named: "no_data_list")
+                self.emptyView.actionButton.isHidden = true
+                
+                self.measuresSegmentedControl.isHidden = true
+                self.measuresTableView.isHidden = true
+                self.emptyView.isHidden = false
+                
+                return
+        }
         
-        if self.measures.count == 0 &&
-            self.bloodPressureMeasures.count == 0 {
+        self.bloodPressureMeasures = bloodPressureMeasures
+        self.weightMeasures = weightMeasures
+        
+        if self.weightMeasures.count > 0 &&
+            self.bloodPressureMeasures.count > 0 {
             
-            self.emptyView.titleLabel.text = "noMeasuresDataTitle".localized
-            self.emptyView.subTitleLabel.text = "noMeasuresDataSubTitle".localized
-            self.emptyView.imageView.image = UIImage(named: "no_data_list")
-            self.emptyView.actionButton.isHidden = true
+            self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
+            self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
             
-            self.measuresTableView.isHidden = true
-            self.emptyView.isHidden = false
-        } else {
+            self.measuresSegmentedControl.isHidden = false
+            self.measuresTableView.isHidden = false
+            self.emptyView.isHidden = true
+        } else if self.weightMeasures.count > 0 {
             
+            self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
+            
+            self.measuresSegmentedControl.isHidden = true
+            self.measuresTableView.isHidden = false
+            self.emptyView.isHidden = true
+        } else if self.bloodPressureMeasures.count > 0 {
+            
+            self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
+            
+            self.measuresSegmentedControl.isHidden = true
             self.measuresTableView.isHidden = false
             self.emptyView.isHidden = true
         }
@@ -89,7 +113,7 @@ extension MeasuresViewController: UITableViewDelegate, UITableViewDataSource {
         
         if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
             
-            return self.measures.count
+            return self.weightMeasures.count
         } else {
             
             return self.bloodPressureMeasures.count
@@ -113,35 +137,23 @@ extension MeasuresViewController: UITableViewDelegate, UITableViewDataSource {
             let cell: MeasureTableViewCell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MeasureTableViewCell
             
             if indexPath.row == 0 {
-                if self.measures.count == 1 {
+                if self.weightMeasures.count == 1 {
                     cell.pointImageView.image = UIImage(named: "historic_one_point")
                 } else {
                     cell.pointImageView.image = UIImage(named: "historic_first_point")
                 }
-            } else if indexPath.row == self.measures.count - 1 {
+            } else if indexPath.row == self.weightMeasures.count - 1 {
                 cell.pointImageView.image = UIImage(named: "historic_last_point")
             } else {
                 cell.pointImageView.image = UIImage(named: "historic_middle_point")
             }
             
-            cell.measureLabel.text = self.measures[indexPath.row].value
-            cell.measureUnitLabel.text = self.measures[indexPath.row].unit
+            cell.measureLabel.text = self.weightMeasures[indexPath.row].value
+            cell.measureUnitLabel.text = self.weightMeasures[indexPath.row].unit
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"
-            cell.measureDateLabel.text = dateFormatter.string(from: self.measures[indexPath.row].date)
-            
-            if indexPath.row == 0 {
-                
-                if let lastMeasure = Float(self.measures[indexPath.row].value),
-                    let firstValue = self.measures.last?.value,
-                    let firstMeasure = Float(firstValue) {
-                    
-                    cell.measureDifferenceLabel.text = "+ \(Double(lastMeasure - firstMeasure).rounded(toPlaces: 1))"
-                } else {
-                    cell.measureDifferenceLabel.text = "---"
-                }
-            }
+            cell.measureDateLabel.text = dateFormatter.string(from: self.weightMeasures[indexPath.row].date)
             
             return cell
         } else {
@@ -221,7 +233,7 @@ extension MeasuresViewController {
                     let weight = measureDataScaleArray["weight"] as? Float {
                     
                     if stable {
-                        self.measure = Weight(value: String(describing: weight), unit: "Kg", date: Date())
+                        self.weightMeasure = Weight(value: String(describing: weight), unit: "Kg", date: Date())
                     } else {
                         
                         let measureViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MeasureViewController") as! MeasureViewController

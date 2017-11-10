@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     
     private func setupView() {
 
-        self.scaleButtonLabel.text = "scaleTitleButton".localized
+        self.scaleButtonLabel.text = "principalTitleButton".localized
         self.scaleButtonLabel.textColor = Colors.secondaryColor.color
         
         self.profileNameLabel.textColor = Colors.secondaryColor.color

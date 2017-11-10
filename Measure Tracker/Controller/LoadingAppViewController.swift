@@ -18,7 +18,7 @@ class LoadingAppViewController: UIViewController {
         
         self.emptyView.isHidden = true
         
-        self.loadingActivityIndicatorView.color = Colors.primaryColor.color
+        self.loadingActivityIndicatorView.color = Colors.secondaryColor.color
     }
     
     override func viewDidLoad() {

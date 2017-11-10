@@ -14,8 +14,6 @@ class MeasureTableViewCell: UITableViewCell {
     @IBOutlet weak var measureLabel: UILabel!
     @IBOutlet weak var measureUnitLabel: UILabel!
     @IBOutlet weak var measureDateLabel: UILabel!
-    @IBOutlet weak var measureDifferenceLabel: UILabel!
-    @IBOutlet weak var measureDifferenceUnitLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
