@@ -48,47 +48,45 @@ class MeasuresViewController: UIViewController {
                                                name: NSNotification.Name("MeasureData"),
                                                object: nil)
         
-        guard let weightMeasures = DataManager.sharedInstnce.loadData(forKey: "measures") as? [Weight],
-            let bloodPressureMeasures = DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as? [BloodPressure] else {
-                
-                self.emptyView.titleLabel.text = "noMeasuresDataTitle".localized
-                self.emptyView.subTitleLabel.text = "noMeasuresDataSubTitle".localized
-                self.emptyView.imageView.image = UIImage(named: "no_data_list")
-                self.emptyView.actionButton.isHidden = true
-                
-                self.measuresSegmentedControl.isHidden = true
-                self.measuresTableView.isHidden = true
-                self.emptyView.isHidden = false
-                
-                return
-        }
+        self.weightMeasures = DataManager.sharedInstnce.loadData(forKey: "measures") as! [Weight]
+        self.bloodPressureMeasures = DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as! [BloodPressure]
         
-        self.bloodPressureMeasures = bloodPressureMeasures
-        self.weightMeasures = weightMeasures
-        
-        if self.weightMeasures.count > 0 &&
-            self.bloodPressureMeasures.count > 0 {
+        if self.weightMeasures.count == 0 &&
+            self.bloodPressureMeasures.count == 0 {
             
-            self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
-            self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
+            self.emptyView.titleLabel.text = "noMeasuresDataTitle".localized
+            self.emptyView.subTitleLabel.text = "noMeasuresDataSubTitle".localized
+            self.emptyView.imageView.image = UIImage(named: "no_data_list")
+            self.emptyView.actionButton.isHidden = true
+            
+            self.measuresSegmentedControl.isHidden = true
+            self.measuresTableView.isHidden = true
+            self.emptyView.isHidden = false
+        } else {
             
             self.measuresSegmentedControl.isHidden = false
-            self.measuresTableView.isHidden = false
-            self.emptyView.isHidden = true
-        } else if self.weightMeasures.count > 0 {
             
-            self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
-            
-            self.measuresSegmentedControl.isHidden = true
-            self.measuresTableView.isHidden = false
-            self.emptyView.isHidden = true
-        } else if self.bloodPressureMeasures.count > 0 {
-            
-            self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
-            
-            self.measuresSegmentedControl.isHidden = true
-            self.measuresTableView.isHidden = false
-            self.emptyView.isHidden = true
+            if self.weightMeasures.count > 0 &&
+                self.bloodPressureMeasures.count > 0 {
+                
+                self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
+                self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
+
+                self.measuresTableView.isHidden = false
+                self.emptyView.isHidden = true
+            } else if self.weightMeasures.count > 0 {
+                
+                self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
+
+                self.measuresTableView.isHidden = false
+                self.emptyView.isHidden = true
+            } else if self.bloodPressureMeasures.count > 0 {
+                
+                self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
+
+                self.measuresTableView.isHidden = false
+                self.emptyView.isHidden = true
+            }
         }
     }
     

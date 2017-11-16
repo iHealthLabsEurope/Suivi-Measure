@@ -39,6 +39,7 @@ class ScaleViewController: UIViewController {
     @IBOutlet weak var heartPulseUnitLabel: UILabel!
     @IBOutlet weak var bloodPressureAddButton: UIButton!
     
+    @IBOutlet weak var measuresStackView: UIStackView!
     @IBOutlet weak var measuresSegmentedControl: UISegmentedControl!
     @IBOutlet weak var weightGraphView: UIView!
     var measureGraph: ScrollableGraphView?
@@ -54,6 +55,8 @@ class ScaleViewController: UIViewController {
     
     var bloodPressureMeasures: [BloodPressure] = []
     var bloodPressureMeasure: BloodPressure?
+    
+    // MARK: - Private Functions
     
     private func setupView() {
         
@@ -140,32 +143,10 @@ class ScaleViewController: UIViewController {
         self.measureGraph?.backgroundFillColor = UIColor.clear
         self.measureGraph?.showsHorizontalScrollIndicator = false
         self.measureGraph?.shouldAnimateOnAdapt = false
+        self.measureGraph?.shouldAnimateOnStartup = true
         self.measureGraph?.direction = .rightToLeft
-        
-        guard let firstMeasure = self.weightMeasures.first,
-                let firstWeight = Double(firstMeasure.value) else { return }
-        
-        self.measureGraph?.rangeMax = firstWeight + 10
-        
-        while true {
-
-            if let _ = self.weightMeasures.first(where: {
-                
-                if let measure = Double($0.value),
-                    let rangeMaxCurrent = self.measureGraph?.rangeMax {
-                    return measure > rangeMaxCurrent
-                }
-                
-                return false
-            })
-            {
-                self.measureGraph?.rangeMax += 5
-            } else {
-                break
-            }
-        }
-
-        self.measureGraph?.rangeMin = firstWeight - 3
+        self.measureGraph?.rangeMax = 100
+        self.measureGraph?.rangeMin = 0
 
         // Add everything to the graph.
         self.measureGraph?.addReferenceLines(referenceLines: referenceLines)
@@ -240,6 +221,7 @@ class ScaleViewController: UIViewController {
         self.measureGraph?.backgroundFillColor = UIColor.clear
         self.measureGraph?.showsHorizontalScrollIndicator = false
         self.measureGraph?.shouldAnimateOnAdapt = false
+        self.measureGraph?.shouldAnimateOnStartup = false
         self.measureGraph?.direction = .rightToLeft
         self.measureGraph?.rangeMax = 180
         self.measureGraph?.rangeMin = 50
@@ -258,6 +240,93 @@ class ScaleViewController: UIViewController {
         self.weightGraphView.addSubview(self.measureGraph!)
     }
     
+    private func updateView () {
+        
+        self.weightMeasures = DataManager.sharedInstnce.loadData(forKey: "measures") as! [Weight]
+        self.bloodPressureMeasures = DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as! [BloodPressure]
+        
+        if self.weightMeasures.count == 0 &&
+            self.bloodPressureMeasures.count == 0 {
+            
+            self.dayLabel.isHidden = true
+            self.weightStackView.isHidden = true
+            self.bloodPressureDayLabel.isHidden = true
+            self.bloodPressureStackView.isHidden = true
+            
+            self.measuresStackView.isHidden = true
+            
+            self.emptyView.titleLabel.text = "noMeasureDataTitle".localized
+            self.emptyView.subTitleLabel.text = "noMeasureDataSubTitle".localized
+            self.emptyView.imageView.image = UIImage(named: "no_data_graph")
+            self.emptyView.actionButton.isHidden = true
+            
+            self.emptyView.isHidden = false
+        } else {
+            
+            self.measuresStackView.isHidden = false
+            self.emptyView.isHidden = true
+            
+            self.dayLabel.isHidden = true
+            self.weightStackView.isHidden = true
+            self.bloodPressureDayLabel.isHidden = true
+            self.bloodPressureStackView.isHidden = true
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            
+            if self.weightMeasures.count > 0 {
+                
+                self.weightMeasures = self.weightMeasures.sorted(by: { $0.1.date < $0.0.date })
+                
+                self.dayLabel.isHidden = false
+                self.weightStackView.isHidden = false
+                
+                if let lastWeightMeasure = self.weightMeasures.first {
+                    
+                    self.weightLabel.text = lastWeightMeasure.value
+                    self.weightUnitLabel.text = lastWeightMeasure.unit
+                    
+                    self.dayLabel.text = dateFormatter.string(from: lastWeightMeasure.date)
+                }
+            }
+            
+            if self.bloodPressureMeasures.count > 0 {
+                
+                self.bloodPressureMeasures = self.bloodPressureMeasures.sorted(by: { $0.1.date < $0.0.date })
+                
+                self.bloodPressureDayLabel.isHidden = false
+                self.bloodPressureStackView.isHidden = false
+                
+                if let lastBloodPressureMeasure = self.bloodPressureMeasures.first {
+                    
+                    self.bloodPressureLabel.text = lastBloodPressureMeasure.pressureValue
+                    self.bloodPressureUnitLabel.text = lastBloodPressureMeasure.pressureUnit
+                    self.heartPulseLabel.text = lastBloodPressureMeasure.heartValue
+                    self.heartPulseUnitLabel.text = lastBloodPressureMeasure.heartUnit
+                    
+                    self.bloodPressureDayLabel.text = dateFormatter.string(from: lastBloodPressureMeasure.date)
+                }
+            }
+            
+            //self.updateGraph()
+        }
+    }
+    
+    private func updateGraph() {
+        
+        self.measureGraph?.dataSource = nil
+        self.measureGraph?.removeFromSuperview()
+        self.measureGraph = nil
+        
+        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
+            self.addWeightGraph()
+        } else {
+            self.addBloodPressureGraph()
+        }
+    }
+    
+    // MARK: - Override Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -270,6 +339,8 @@ class ScaleViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.updateGraph()
         
         var isBluetoothPoweredOn: Bool?
         
@@ -311,6 +382,7 @@ class ScaleViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
         NotificationCenter.default.removeObserver(self)
         
@@ -321,11 +393,12 @@ class ScaleViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        self.measureGraph?.frame = self.weightGraphView.bounds
-        self.view.layoutSubviews()
+        //self.measureGraph?.frame = self.weightGraphView.bounds
+        //self.view.layoutSubviews()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
         
         if identifier == "segueToMeasure" {
             
@@ -334,6 +407,8 @@ class ScaleViewController: UIViewController {
         
         return true
     }
+    
+    // MARK: - IBAction Functions
  
     @IBAction func weightHelpButtonClicked(_ sender: Any) {
         
@@ -364,88 +439,9 @@ class ScaleViewController: UIViewController {
     @IBAction func profileButtonClicked(_ sender: Any) {
         self.performSegue(withIdentifier: "segueToProfile", sender: sender)
     }
-    
-    private func updateView () {
-
-        self.dayLabel.isHidden = true
-        self.weightStackView.isHidden = true
-        
-        self.bloodPressureDayLabel.isHidden = true
-        self.bloodPressureStackView.isHidden = true
-        
-        let weightMeasuresStored = DataManager.sharedInstnce.loadData(forKey: "measures") as? [Weight]
-        let bloodPressureMeasuresStored = DataManager.sharedInstnce.loadData(forKey: "blood_pressure_measures") as? [BloodPressure]
-        
-        if weightMeasuresStored != nil ||
-            bloodPressureMeasuresStored != nil {
-
-            self.emptyView.isHidden = true
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMM yyyy"
-            
-            if let _ = weightMeasuresStored {
-                
-                self.dayLabel.isHidden = false
-                self.weightStackView.isHidden = false
-                
-                self.weightMeasures = weightMeasuresStored!.sorted(by: { $0.0.date < $0.1.date })
-                
-                guard let lastWeightMeasure = self.weightMeasures.last else { return }
-                
-                self.weightLabel.text = lastWeightMeasure.value
-                self.weightUnitLabel.text = lastWeightMeasure.unit
-                
-                self.dayLabel.text = dateFormatter.string(from: lastWeightMeasure.date)
-            }
-            
-            if let _ = bloodPressureMeasuresStored {
-                
-                self.bloodPressureDayLabel.isHidden = false
-                self.bloodPressureStackView.isHidden = false
-                
-                self.bloodPressureMeasures = bloodPressureMeasuresStored!.sorted(by: { $0.0.date < $0.1.date })
-                
-                guard let lastBloodPressureMeasure = self.bloodPressureMeasures.last else { return }
-                
-                self.bloodPressureLabel.text = lastBloodPressureMeasure.pressureValue
-                self.bloodPressureUnitLabel.text = lastBloodPressureMeasure.pressureUnit
-                self.heartPulseLabel.text = lastBloodPressureMeasure.heartValue
-                self.heartPulseUnitLabel.text = lastBloodPressureMeasure.heartUnit
-                
-                self.bloodPressureDayLabel.text = dateFormatter.string(from: lastBloodPressureMeasure.date)
-            }
-            
-            if !self.dayWeightStackView.isHidden && !self.dayBloodPressionStackView.isHidden {
-                
-                self.separatorView.isHidden = false
-            }
-            
-            self.updateGraph()
-        } else {
-            
-            self.emptyView.titleLabel.text = "noMeasureDataTitle".localized
-            self.emptyView.subTitleLabel.text = "noMeasureDataSubTitle".localized
-            self.emptyView.imageView.image = UIImage(named: "no_data_graph")
-            self.emptyView.actionButton.isHidden = true
-            
-            self.emptyView.isHidden = false
-        }
-    }
-    
-    func updateGraph() {
-        
-        self.measureGraph?.dataSource = nil
-        self.measureGraph?.removeFromSuperview()
-        self.measureGraph = nil
-        
-        if self.measuresSegmentedControl.selectedSegmentIndex == 0 {
-            self.addWeightGraph()
-        } else {
-            self.addBloodPressureGraph()
-        }
-    }
 }
+
+// MARK: - MeasureDelegate Functions
 
 extension ScaleViewController: MeasureDelegate {
     
@@ -461,12 +457,16 @@ extension ScaleViewController: MeasureDelegate {
     }
 }
 
+// MARK: - CBCentralManagerDelegate Functions
+
 extension ScaleViewController: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         
     }
 }
+
+// MARK: - ScrollableGraphViewDataSource Functions
 
 extension ScaleViewController: ScrollableGraphViewDataSource {
     
@@ -517,6 +517,8 @@ extension ScaleViewController: ScrollableGraphViewDataSource {
         }
     }
 }
+
+// MARK: - Manager Data Extentions
 
 extension ScaleViewController {
     

@@ -34,13 +34,14 @@ class DataManager {
         }
     }
     
-    func loadData(forKey: String) -> NSCoding? {
+    func loadData(forKey: String) -> NSCoding {
 
-        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Dictionary<String, Any> {
+        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Dictionary<String, Any>,
+            let ourKeyData = ourData[forKey] as? NSCoding {
             
-            return ourData[forKey] as? NSCoding
+            return ourKeyData
         }
         
-        return nil
+        return [] as NSCoding
     }
 }
