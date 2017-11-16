@@ -12,11 +12,6 @@ import ScrollableGraphView
 
 class ScaleViewController: UIViewController {
     
-    @IBOutlet weak var measuresButton: UIButton!
-    @IBOutlet weak var measuresButtonLabel: UILabel!
-    @IBOutlet weak var profileButton: UIButton!
-    @IBOutlet weak var profileButtonLabel: UILabel!
-    
     @IBOutlet weak var emptyView: Empty!
   
     @IBOutlet weak var dayMeasuresStackView: UIStackView!
@@ -59,11 +54,6 @@ class ScaleViewController: UIViewController {
     // MARK: - Private Functions
     
     private func setupView() {
-        
-        self.measuresButtonLabel.text = "measuresTitleButton".localized
-        self.measuresButtonLabel.textColor = Colors.secondaryColor.color
-        self.profileButtonLabel.text = "profileTitleButton".localized
-        self.profileButtonLabel.textColor = Colors.secondaryColor.color
         
         self.dayLabel.textColor = Colors.textColor.color
         self.weightLabel.textColor = Colors.primaryColor.color

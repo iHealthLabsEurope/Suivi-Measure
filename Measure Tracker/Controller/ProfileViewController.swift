@@ -10,9 +10,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var scaleButton: UIButton!
-    @IBOutlet weak var scaleButtonLabel: UILabel!
-    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileHeightLabel: UILabel!
@@ -24,9 +21,6 @@ class ProfileViewController: UIViewController {
     
     private func setupView() {
 
-        self.scaleButtonLabel.text = "principalTitleButton".localized
-        self.scaleButtonLabel.textColor = Colors.secondaryColor.color
-        
         self.profileNameLabel.textColor = Colors.secondaryColor.color
         self.profileHeightLabel.textColor = Colors.textColor.color
         self.profileHeightUnitLabel.textColor = Colors.textColor.color
@@ -63,6 +57,15 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.manageMeasureData(_:)),
+                                               name: NSNotification.Name("MeasureData"),
+                                               object: nil)
         
         if let userStored = DataManager.sharedInstnce.loadData(forKey: "user") as? User {
             
@@ -79,15 +82,6 @@ class ProfileViewController: UIViewController {
             self.profileNameLabel.text = "--"
             self.profileHeightLabel.text = "-"
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.manageMeasureData(_:)),
-                                               name: NSNotification.Name("MeasureData"),
-                                               object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

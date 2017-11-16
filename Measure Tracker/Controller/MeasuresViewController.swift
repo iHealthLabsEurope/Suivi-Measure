@@ -9,9 +9,6 @@
 import UIKit
 
 class MeasuresViewController: UIViewController {
-
-    @IBOutlet weak var scaleButton: UIButton!
-    @IBOutlet weak var scaleButtonLabel: UILabel!
     
     @IBOutlet weak var emptyView: Empty!
     
@@ -25,9 +22,6 @@ class MeasuresViewController: UIViewController {
     var bloodPressureMeasure: BloodPressure?
     
     private func setupView() {
-        
-        self.scaleButtonLabel.text = "principalTitleButton".localized
-        self.scaleButtonLabel.textColor = Colors.secondaryColor.color
         
         self.measuresSegmentedControl.setTitle("weightMeasuresSegmentTitle".localized, forSegmentAt: 0)
         self.measuresSegmentedControl.setTitle("bloodPressureMeasuresSegmentTitle".localized, forSegmentAt: 1)

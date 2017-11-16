@@ -44,7 +44,7 @@ class LoadingAppViewController: UIViewController {
                 HS4Manager.sharedInstance.discoveryInBackground()
                 BP5Manager.sharedInstance
                 
-                self.performSegue(withIdentifier: "segueToScale", sender: nil)
+                self.performSegue(withIdentifier: "segueToApp", sender: nil)
             } else {
 
                 self.emptyView.titleLabel.text = "loginSDKFailTitle".localized

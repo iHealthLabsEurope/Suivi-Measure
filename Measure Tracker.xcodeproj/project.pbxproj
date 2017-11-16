@@ -12,6 +12,7 @@
 		EC0850801FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08507F1FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift */; };
 		EC1EEAAF1F9F85E900E8D853 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC567F571F9F4D4500F23613 /* Info.plist */; };
 		EC1EEAB11F9F893700E8D853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1EEAB01F9F893700E8D853 /* Main.storyboard */; };
+		EC229CE11FBDB07500E46226 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC229CE01FBDB07500E46226 /* MainTabViewController.swift */; };
 		EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */; };
 		EC567F531F9F4D4500F23613 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC567F521F9F4D4500F23613 /* Assets.xcassets */; };
 		EC567F561F9F4D4500F23613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC567F541F9F4D4500F23613 /* LaunchScreen.storyboard */; };
@@ -59,6 +60,7 @@
 		EC08507D1FB065540033AAAF /* BloodPressureMeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureMeasureViewController.swift; sourceTree = "<group>"; };
 		EC08507F1FB1B2790033AAAF /* BloodPressureMeasureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureMeasureTableViewCell.swift; sourceTree = "<group>"; };
 		EC1EEAB01F9F893700E8D853 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EC229CE01FBDB07500E46226 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		EC567F481F9F4D4500F23613 /* Measure Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Measure Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC567F4B1F9F4D4500F23613 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC567F521F9F4D4500F23613 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +184,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EC229CDF1FBDB02A00E46226 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				EC567F5E1F9F657A00F23613 /* MeasureViewController.swift */,
+				EC08507D1FB065540033AAAF /* BloodPressureMeasureViewController.swift */,
+			);
+			path = Measurement;
+			sourceTree = "<group>";
+		};
 		EC567F3F1F9F4D4500F23613 = {
 			isa = PBXGroup;
 			children = (
@@ -254,11 +265,11 @@
 			isa = PBXGroup;
 			children = (
 				EC567F5F1F9F657A00F23613 /* LoadingAppViewController.swift */,
+				EC229CE01FBDB07500E46226 /* MainTabViewController.swift */,
 				EC567F651F9F657B00F23613 /* ScaleViewController.swift */,
 				EC567F601F9F657A00F23613 /* MeasuresViewController.swift */,
-				EC567F5E1F9F657A00F23613 /* MeasureViewController.swift */,
-				EC08507D1FB065540033AAAF /* BloodPressureMeasureViewController.swift */,
 				EC567F621F9F657B00F23613 /* ProfileViewController.swift */,
+				EC229CDF1FBDB02A00E46226 /* Measurement */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -570,6 +581,7 @@
 				EC567F801F9F6ACB00F23613 /* MeasureTableViewCell.swift in Sources */,
 				EC567F4C1F9F4D4500F23613 /* AppDelegate.swift in Sources */,
 				EC08507E1FB065540033AAAF /* BloodPressureMeasureViewController.swift in Sources */,
+				EC229CE11FBDB07500E46226 /* MainTabViewController.swift in Sources */,
 				EC9365AE1FAC717A003EA491 /* Weight.swift in Sources */,
 				EC567F891F9F6AF200F23613 /* User.swift in Sources */,
 				EC9365B21FAC761D003EA491 /* BloodPressure.swift in Sources */,
